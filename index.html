@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Content Calendar - Annick Bathrooms</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a3a5c;
+    --blue: #2563a8;
+    --blue-light: #dbeafe;
+    --teal: #0d7f6e;
+    --teal-light: #ccfbf1;
+    --amber: #b45309;
+    --amber-light: #fef3c7;
+    --purple: #5b21b6;
+    --purple-light: #ede9fe;
+    --rose: #9f1239;
+    --rose-light: #ffe4e6;
+    --slate: #334155;
+    --slate-mid: #64748b;
+    --slate-light: #f1f5f9;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f8fafc;
+    color: var(--slate);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ─────────────────────────────────────────── */
+  .header {
+    background: var(--navy);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .brand-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: #fff;
+    letter-spacing: -0.3px;
+  }
+
+  .brand-sub {
+    font-size: 12px;
+    color: #93c5fd;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .platform-tabs {
+    display: flex;
+    gap: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 4px;
+  }
+
+  .platform-tab {
+    padding: 8px 20px;
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+    color: rgba(255,255,255,0.6);
+    background: transparent;
+  }
+
+  .platform-tab.active {
+    background: var(--white);
+    color: var(--navy);
+    box-shadow: var(--shadow);
+  }
+
+  .platform-tab:hover:not(.active) {
+    color: white;
+    background: rgba(255,255,255,0.15);
+  }
+
+  .view-tabs {
+    display: flex;
+    gap: 4px;
+  }
+
+  .view-tab {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    transition: all 0.2s;
+    color: rgba(255,255,255,0.7);
+    background: transparent;
+  }
+
+  .view-tab.active {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border-color: rgba(255,255,255,0.4);
+  }
+
+  /* ── MAIN ───────────────────────────────────────────── */
+  .main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px;
+  }
+
+  /* ── STATS BAR ──────────────────────────────────────── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--slate-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .stat-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .stat-sub {
+    font-size: 12px;
+    color: var(--slate-mid);
+  }
+
+  /* ── FILTERS ────────────────────────────────────────── */
+  .filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .filter-label {
+    font-size: 13px;
+    color: var(--slate-mid);
+    font-weight: 500;
+    margin-right: 4px;
+  }
+
+  .filter-chip {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--slate-mid);
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .filter-chip.active {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+  }
+
+  .filter-chip:hover:not(.active) {
+    border-color: var(--navy);
+    color: var(--navy);
+  }
+
+  .search-box {
+    margin-left: auto;
+    position: relative;
+  }
+
+  .search-box input {
+    padding: 8px 14px 8px 36px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--slate);
+    background: var(--white);
+    width: 220px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .search-box input:focus { border-color: var(--blue); }
+
+  .search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--slate-mid);
+    font-size: 15px;
+  }
+
+  /* ── CALENDAR GRID ──────────────────────────────────── */
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+  }
+
+  .post-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.2s;
+    cursor: pointer;
+    animation: fadeIn 0.3s ease forwards;
+    opacity: 0;
+  }
+
+  .post-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-header {
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .day-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--navy);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .card-meta {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .card-date {
+    font-size: 12px;
+    color: var(--slate-mid);
+    font-weight: 400;
+  }
+
+  .type-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .card-body { padding: 16px 18px; }
+
+  .hook-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .angle-text {
+    font-size: 13px;
+    color: var(--slate-mid);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .card-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--slate-light);
+    color: var(--slate-mid);
+  }
+
+  .card-footer {
+    padding: 12px 18px;
+    background: var(--slate-light);
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--slate-mid);
+    line-height: 1.4;
+  }
+
+  .card-footer strong {
+    color: var(--slate);
+    font-weight: 600;
+  }
+
+  /* ── DETAIL MODAL ───────────────────────────────────── */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    z-index: 200;
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .overlay.open { display: flex; }
+
+  .modal {
+    background: var(--white);
+    border-radius: 20px;
+    max-width: 640px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+    animation: slideUp 0.25s ease;
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .modal-header {
+    padding: 24px 28px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .modal-day {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--navy);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .modal-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  .modal-body {
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .modal-section-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--slate-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+  }
+
+  .modal-section-value {
+    font-size: 14px;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--slate-mid);
+    transition: all 0.15s;
+    margin-top: 8px;
+  }
+
+  .copy-btn:hover { background: var(--slate-light); color: var(--navy); border-color: var(--navy); }
+  .copy-btn.copied { background: var(--teal-light); color: var(--teal); border-color: var(--teal); }
+
+  .modal-close {
+    margin-left: auto;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--slate-mid);
+    flex-shrink: 0;
+    transition: all 0.15s;
+  }
+
+  .modal-close:hover { background: var(--slate-light); color: var(--navy); }
+
+  /* ── TABLE VIEW ─────────────────────────────────────── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    font-size: 13px;
+  }
+
+  th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: white;
+    background: var(--navy);
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  tr:hover td { background: var(--slate-light); }
+
+  td.hook-col {
+    font-weight: 500;
+    color: var(--navy);
+    max-width: 280px;
+  }
+
+  td.cta-col {
+    color: var(--slate-mid);
+    max-width: 240px;
+    font-size: 12px;
+  }
+
+  /* ── HOOK BANK ──────────────────────────────────────── */
+  .hook-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 12px;
+  }
+
+  .hook-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.15s;
+    animation: fadeIn 0.3s ease forwards;
+    opacity: 0;
+  }
+
+  .hook-card:hover {
+    border-color: var(--blue);
+    box-shadow: var(--shadow);
+  }
+
+  .hook-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hook-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--slate-mid);
+    min-width: 32px;
+  }
+
+  .hook-text-main {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.5;
+  }
+
+  .hook-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* ── COLOURS BY TYPE ────────────────────────────────── */
+  .type-reel        { background: #dbeafe; color: #1d4ed8; }
+  .type-carousel    { background: #d1fae5; color: #065f46; }
+  .type-post        { background: #fef3c7; color: #92400e; }
+  .type-story       { background: #ede9fe; color: #5b21b6; }
+  .type-story-poll  { background: #ede9fe; color: #5b21b6; }
+  .type-story-qa    { background: #ede9fe; color: #5b21b6; }
+  .type-photo-post  { background: #dbeafe; color: #1d4ed8; }
+  .type-edu         { background: #d1fae5; color: #065f46; }
+  .type-native-video { background: #ede9fe; color: #5b21b6; }
+  .type-poll        { background: #fce7f3; color: #9d174d; }
+  .type-comparison  { background: #fef3c7; color: #92400e; }
+  .type-customer    { background: #d1fae5; color: #065f46; }
+  .type-community   { background: #dbeafe; color: #1d4ed8; }
+  .type-product     { background: #fef3c7; color: #92400e; }
+  .type-question    { background: #ffe4e6; color: #9f1239; }
+  .type-behind      { background: #ede9fe; color: #5b21b6; }
+  .type-price       { background: #d1fae5; color: #065f46; }
+  .type-live        { background: #ffe4e6; color: #9f1239; }
+  .type-live-promo  { background: #fce7f3; color: #9d174d; }
+  .type-trend       { background: #dbeafe; color: #1d4ed8; }
+  .type-myth        { background: #fef3c7; color: #92400e; }
+  .type-staff       { background: #dbeafe; color: #1d4ed8; }
+  .type-deal        { background: #ffe4e6; color: #9f1239; }
+  .type-debate      { background: #ede9fe; color: #5b21b6; }
+  .type-review      { background: #d1fae5; color: #065f46; }
+  .type-checklist   { background: #fef3c7; color: #92400e; }
+  .type-reflection  { background: #dbeafe; color: #1d4ed8; }
+  .type-arrival     { background: #ffe4e6; color: #9f1239; }
+  .type-transform   { background: #d1fae5; color: #065f46; }
+  .type-tip         { background: #fef3c7; color: #92400e; }
+  .type-testimonial { background: #d1fae5; color: #065f46; }
+
+  .cat-ba       { background: #dbeafe; color: #1d4ed8; }
+  .cat-price    { background: #d1fae5; color: #065f46; }
+  .cat-edu      { background: #ede9fe; color: #5b21b6; }
+  .cat-cur      { background: #fef3c7; color: #92400e; }
+  .cat-asp      { background: #fce7f3; color: #9d174d; }
+  .cat-local    { background: #ffe4e6; color: #9f1239; }
+  .cat-urg      { background: #ccfbf1; color: #065f46; }
+  .cat-story    { background: #dbeafe; color: #1d4ed8; }
+  .cat-eng      { background: #ffe4e6; color: #9f1239; }
+  .cat-seas     { background: #d1fae5; color: #065f46; }
+  .cat-comm     { background: #ede9fe; color: #5b21b6; }
+  .cat-pv       { background: #fef3c7; color: #92400e; }
+
+  .hidden { display: none !important; }
+
+  /* ── EMPTY STATE ────────────────────────────────────── */
+  .empty-state {
+    text-align: center;
+    padding: 64px 32px;
+    color: var(--slate-mid);
+  }
+
+  .empty-state svg { margin-bottom: 16px; opacity: 0.4; }
+  .empty-state h3 { font-size: 18px; color: var(--slate); margin-bottom: 8px; }
+
+  /* ── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .header-inner { padding: 16px; gap: 12px; }
+    .main { padding: 16px; }
+    .calendar-grid { grid-template-columns: 1fr; }
+    .hook-grid { grid-template-columns: 1fr; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .search-box { margin-left: 0; width: 100%; }
+    .search-box input { width: 100%; }
+    .filters { gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-name">Annick Bathrooms</div>
+      <div class="brand-sub">Social Media Content Planner</div>
+    </div>
+    <div class="platform-tabs">
+      <button class="platform-tab active" onclick="setPlatform('instagram')">Instagram</button>
+      <button class="platform-tab" onclick="setPlatform('facebook')">Facebook</button>
+      <button class="platform-tab" onclick="setPlatform('hooks')">Hook Bank</button>
+    </div>
+    <div class="view-tabs" id="view-tabs">
+      <button class="view-tab active" onclick="setView('grid')">Grid</button>
+      <button class="view-tab" onclick="setView('table')">Table</button>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <div class="stats-bar" id="stats-bar">
+    <div class="stat-card">
+      <div class="stat-label">Total Posts</div>
+      <div class="stat-value" id="stat-total">30</div>
+      <div class="stat-sub">30-day plan</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Reels</div>
+      <div class="stat-value" id="stat-reels">-</div>
+      <div class="stat-sub">Video content</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Carousels</div>
+      <div class="stat-value" id="stat-carousels">-</div>
+      <div class="stat-sub">Swipe posts</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Stories</div>
+      <div class="stat-value" id="stat-stories">-</div>
+      <div class="stat-sub">24hr content</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Posts / Week</div>
+      <div class="stat-value">4</div>
+      <div class="stat-sub">Recommended</div>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="filters" id="filters-bar">
+    <span class="filter-label">Filter:</span>
+    <button class="filter-chip active" onclick="filterType('all', this)">All</button>
+    <span id="type-filters"></span>
+    <div class="search-box">
+      <span class="search-icon">&#128269;</span>
+      <input type="text" id="search-input" placeholder="Search hooks, angles..." oninput="filterSearch(this.value)">
+    </div>
+  </div>
+
+  <!-- Grid View -->
+  <div class="calendar-grid" id="grid-view"></div>
+
+  <!-- Table View -->
+  <div class="table-wrap hidden" id="table-view">
+    <table>
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Slot</th>
+          <th>Type</th>
+          <th>Hook</th>
+          <th>Angle</th>
+          <th>Format</th>
+          <th>CTA</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+
+  <!-- Hook Bank -->
+  <div class="hook-grid hidden" id="hooks-view"></div>
+
+  <!-- Empty state -->
+  <div class="empty-state hidden" id="empty-state">
+    <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+    </svg>
+    <h3>No posts match your filter</h3>
+    <p>Try a different type or clear the search.</p>
+  </div>
+
+</main>
+
+<!-- Detail Modal -->
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-day" id="modal-day">1</div>
+      <div style="flex:1;min-width:0;">
+        <div id="modal-type-pill" style="margin-bottom:8px;"></div>
+        <div class="modal-title" id="modal-hook"></div>
+        <div style="font-size:12px;color:var(--slate-mid);" id="modal-date"></div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="modal-section-label">Content Angle</div>
+        <div class="modal-section-value" id="modal-angle"></div>
+      </div>
+      <div>
+        <div class="modal-section-label">Format / How to Film</div>
+        <div class="modal-section-value" id="modal-format"></div>
+      </div>
+      <div>
+        <div class="modal-section-label">Why They Stop Scrolling</div>
+        <div class="modal-section-value" id="modal-stop"></div>
+      </div>
+      <div>
+        <div class="modal-section-label">Shareability Factor</div>
+        <div class="modal-section-value" id="modal-share"></div>
+      </div>
+      <div>
+        <div class="modal-section-label">Caption Starter / CTA</div>
+        <div class="modal-section-value" id="modal-cta"></div>
+        <button class="copy-btn" id="copy-cta-btn" onclick="copyCTA()">
+          &#128203; Copy CTA to clipboard
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── DATA ────────────────────────────────────────────────────────────────────
+
+const igData = [
+  {day:1,slot:"Week 1 Mon",type:"Reel",hook:"This bathroom cost less than a new sofa",angle:"Price-anchored transformation reveal",format:"Before/after with price overlay text on screen",stop:"Shocking price reveal stops the scroll instantly",share:"People tag partners planning a renovation",cta:"Visit our Irvine showroom or DM us your budget - we will show you what is possible"},
+  {day:2,slot:"Week 1 Wed",type:"Carousel",hook:"5 bathroom mistakes that age your home instantly",angle:"Expert education / fear of error",format:"Swipe tip cards with bold text and product images",stop:"Fear of making an expensive mistake keeps people reading",share:"Saves for future reference - extremely high bookmark rate",cta:"Save this before you start your renovation - and follow for more tips every week"},
+  {day:3,slot:"Week 1 Fri",type:"Reel",hook:"POV: Walking into our Irvine showroom for the first time",angle:"Behind the scenes / showroom tour",format:"Walking tour reel with product callout text overlays",stop:"Curiosity about what is inside a local showroom",share:"Local community sharing across Ayrshire",cta:"Come and see us - no appointment needed. What would you change in your bathroom first?"},
+  {day:4,slot:"Week 1 Sun",type:"Story Poll",hook:"Which bathroom style are you? A or B?",angle:"Personalisation / audience engagement",format:"Two-option poll with side-by-side style images",stop:"Direct personalisation pulls people in every time",share:"Drives DM conversations and story replies",cta:"Vote below - and DM us if you want to see more of your winning style in our showroom"},
+  {day:5,slot:"Week 2 Mon",type:"Reel",hook:"Wet wall panels vs tiles - the honest truth",angle:"Product comparison / pattern interrupt",format:"Side-by-side split-screen comparison demo",stop:"Divisive topic - people have strong opinions and stay to watch",share:"Anyone planning a renovation shares this widely",cta:"Drop your vote in the comments - panels or tiles? We reply to every one"},
+  {day:6,slot:"Week 2 Wed",type:"Post",hook:"Your bathroom should feel like this every morning",angle:"Aspirational lifestyle / emotional pull",format:"Single hero image of beautifully styled bathroom",stop:"Emotional pull to a beautiful space creates longing",share:"Wishlist and mood board shares are very high",cta:"Which part of this bathroom would you keep? Tell us below"},
+  {day:7,slot:"Week 2 Fri",type:"Reel",hook:"How we transformed this tiny bathroom in one weekend",angle:"Speed transformation / social proof",format:"Time-lapse with voiceover and price reveal at end",stop:"Speed of the transformation is genuinely mesmerising",share:"DIY and home renovation group shares",cta:"DM us the dimensions of your bathroom and we will tell you what is possible"},
+  {day:8,slot:"Week 2 Sun",type:"Carousel",hook:"7 products under 100 pounds that upgrade any bathroom",angle:"Budget education / product spotlight",format:"Numbered swipe cards with product images and prices",stop:"Affordable upgrade hook - a budget everyone can relate to",share:"Budget-conscious renovation sharers tag friends",cta:"Save this post - every product is available in our Irvine showroom right now"},
+  {day:9,slot:"Week 3 Mon",type:"Reel",hook:"The shower screen nobody talks about but everyone needs",angle:"Niche product discovery / curiosity hook",format:"Close-up product demo with real installation shot",stop:"Curiosity about an unknown but essential product",share:"Trade and homeowner shares across renovation communities",cta:"Comment SCREEN and we will send you the full product details"},
+  {day:10,slot:"Week 3 Wed",type:"Story",hook:"We just got new stock in - come see before it goes",angle:"Behind the scenes / FOMO / exclusivity",format:"Story montage of new product arrival and unboxing",stop:"Fear of missing out on new arrivals drives urgency",share:"Drives showroom visits and direct messages",cta:"DM us STOCK and we will show you everything that just arrived"},
+  {day:11,slot:"Week 3 Fri",type:"Reel",hook:"This one change made their bathroom look 10 times bigger",angle:"Visual drama / before-after reveal",format:"Side-by-side before and after split-screen reel",stop:"Visual transformation drama is impossible to scroll past",share:"People tag interior-design-interested friends",cta:"What would make the biggest difference in your bathroom? Tell us below"},
+  {day:12,slot:"Week 3 Sun",type:"Post",hook:"Customer of the month - her story",angle:"Social proof / community / real local results",format:"Customer photo with quote text overlay on image",stop:"Real people create genuine trust and strong relatability",share:"Community pride and local Ayrshire sharing",cta:"Congratulations and thank you for trusting us. See the full transformation in our stories"},
+  {day:13,slot:"Week 4 Mon",type:"Reel",hook:"Stop overpaying for bathroom furniture - here is why",angle:"Price transparency / buying power advantage",format:"Voiceover explainer with product shots throughout",stop:"Money-saving hook hits every homeowner with a budget",share:"Budget renovation community shares heavily",cta:"DM us your current quote and we will tell you honestly if we can beat it"},
+  {day:14,slot:"Week 4 Wed",type:"Carousel",hook:"Planning a bathroom renovation? Read this first",angle:"Step-by-step planning guide / expert authority",format:"Numbered checklist swipe cards - step by step",stop:"Practical value for anyone actively planning a renovation",share:"Saved by anyone currently planning - very high save rate",cta:"Save this checklist - and visit us in Irvine when you are ready to start"},
+  {day:15,slot:"Week 4 Fri",type:"Reel",hook:"Trending bathroom look for 2025 - and we stock it",angle:"Trend content / FOMO on current style",format:"Trend showcase reel with product close-ups",stop:"Fear of missing the trend pulls viewers all the way through",share:"Interior design followers share this format widely",cta:"Which trend is your favourite? Comment below and we will show you our version"},
+  {day:16,slot:"Week 4 Sun",type:"Story Q&A",hook:"Ask us anything about bathroom renovation",angle:"Expert positioning / direct audience engagement",format:"Story Q&A sticker with team answering real questions",stop:"Direct answers to real renovation questions",share:"Drives DM conversations with active buyers",cta:"Use the question box - we answer every single one"},
+  {day:17,slot:"Week 5 Mon",type:"Reel",hook:"LVT flooring vs carpet in a bathroom - which wins?",angle:"Debate format / divisive opinion driver",format:"Split-screen comparison with clear verdict at end",stop:"Divisive topic generates very strong opinions from viewers",share:"People with strong opinions share it and defend their view",cta:"Drop your vote - LVT or carpet? We will share the results on Friday"},
+  {day:18,slot:"Week 5 Wed",type:"Carousel",hook:"Before you buy a shower enclosure, watch this",angle:"Buyer education / fear of wrong purchase",format:"Buying guide swipe cards with key questions to ask",stop:"Fear of making an expensive buying mistake keeps people reading",share:"Saved by active bathroom buyers before they purchase",cta:"Save this before you buy anything - and DM us if you need advice"},
+  {day:19,slot:"Week 5 Fri",type:"Reel",hook:"Our most popular bathroom suite this month",angle:"Social proof / bestseller product content",format:"Product showcase reel with real customer install shots",stop:"Social proof and popularity create powerful pull",share:"People tag their partner or spouse to show them",cta:"Comment SUITE and we will send you the full spec and price"},
+  {day:20,slot:"Week 5 Sun",type:"Post",hook:"Did you know this about wet wall panels?",angle:"Surprising fact / expert education post",format:"Single bold surprising fact with clean product image",stop:"Surprising facts break the usual scroll pattern effectively",share:"Contractors and builders share this with their clients",cta:"Save this if you are considering wet wall panels - and ask us anything in the comments"},
+  {day:21,slot:"Week 6 Mon",type:"Reel",hook:"Full bathroom reveal - 1,800 pounds all in",angle:"Price-anchored complete room transformation",format:"Full room reveal with itemised price breakdown at end",stop:"Price plus drama is the most consistently viral combination",share:"Tags anyone currently planning or considering a renovation",cta:"DM us your budget and we will build your perfect bathroom around it"},
+  {day:22,slot:"Week 6 Wed",type:"Carousel",hook:"Match your personality to your bathroom style",angle:"Personalisation / fun engagement driver",format:"Personality style quiz in swipe card format",stop:"People love taking personality-based content every time",share:"Fun shares to friends and partners to compare answers",cta:"Tag someone and see if they agree with their result"},
+  {day:23,slot:"Week 6 Fri",type:"Reel",hook:"We went to our warehouse - look at the buying power",angle:"Behind the scenes / trade access reveal",format:"Warehouse walkthrough reel showing scale of stock",stop:"Behind-the-scenes content consistently outperforms studio content",share:"Trade buyer shares with other contractors they know",cta:"This is how we keep prices low for you. Come see the result in our Irvine showroom"},
+  {day:24,slot:"Week 6 Sun",type:"Story",hook:"Flash deal this weekend only - DM us for details",angle:"Urgency / exclusivity / strong FOMO",format:"Countdown timer story with deal teaser reveal",stop:"Fear of missing a limited weekend offer creates urgency",share:"Drives traffic and DM conversations directly",cta:"DM us the word DEAL and we will send you the details right now"},
+  {day:25,slot:"Week 7 Mon",type:"Reel",hook:"Why your bathroom still looks cheap - and how to fix it",angle:"Ego challenge hook / problem then solution",format:"Problem reveal then clear product-based solution",stop:"Ego challenge makes people watch all the way to the end",share:"People tag friends with tired-looking bathrooms",cta:"Which of these fixes would make the biggest difference for you? Comment below"},
+  {day:26,slot:"Week 7 Wed",type:"Post",hook:"Real review from a real customer",angle:"Social proof / trust building post",format:"Screenshot testimonial with context caption",stop:"Authenticity creates genuine trust - people stop for real reviews",share:"Trust-building shares across renovation communities",cta:"Thank you so much. This is why we do what we do. Ready to sort your bathroom?"},
+  {day:27,slot:"Week 7 Fri",type:"Reel",hook:"The underrated bathroom product you need to know about",angle:"Product discovery / curiosity hook",format:"Close-up product reveal with real use-case shown",stop:"Curiosity and novelty together always stop the scroll",share:"Niche enthusiast shares across bathroom communities",cta:"Comment PRODUCT and we will send you the full details and price"},
+  {day:28,slot:"Week 7 Sun",type:"Carousel",hook:"Our top 5 selling bathroom products this month",angle:"Social proof / bestseller ranked list format",format:"Numbered countdown swipe cards with product detail",stop:"Ranked lists create irresistible curiosity to see number one",share:"Saved for future reference when they are ready to buy",cta:"Save this for when you are ready to choose your products - all available in store now"},
+  {day:29,slot:"Week 8 Mon",type:"Reel",hook:"Come with me to our Irvine showroom - unboxing day",angle:"New arrival / excitement / genuine curiosity",format:"Real-time unboxing walkthrough reel from showroom",stop:"Excitement and novelty pull viewers through to the end",share:"Local followers share with friends and family nearby",cta:"What product are you most excited about? Comment below and come see it in person"},
+  {day:30,slot:"Week 8 Wed",type:"Reel",hook:"One month in - here is what worked and what we learned",angle:"Authenticity / reflection / brand story moment",format:"Talking-to-camera honest reflection reel",stop:"Authenticity and genuine honesty create real loyalty",share:"Business community sharing across Scotland",cta:"Thank you for following our journey. More transformations and tips coming every week"},
+];
+
+const fbData = [
+  {day:1,slot:"Week 1 Mon",type:"Photo Post",hook:"Four years she walked past a bathroom she was ashamed of. Last week, everything changed.",angle:"Emotional customer transformation story",format:"Before and after photos with long-form storytelling caption",stop:"Emotional story invites deeply personal replies from readers",share:"People share real personal stories to their own timelines",cta:"What has been stopping you from sorting yours? Drop it in the comments - we reply to every one"},
+  {day:2,slot:"Week 1 Wed",type:"Educational Post",hook:"5 questions to ask before buying a bathroom suite - save this before your next showroom visit.",angle:"Expert education / buyer confidence builder",format:"Text list with bold numbered questions and a product image",stop:"Practical value invites saves, comments and follow-up questions",share:"Shared to renovation planning groups across Facebook",cta:"Save this post and bring these questions when you visit us in Irvine"},
+  {day:3,slot:"Week 1 Fri",type:"Native Video",hook:"Come and have a look around our Irvine showroom - new stock just arrived.",angle:"Behind the scenes / showroom access video",format:"Walking tour video uploaded directly to Facebook - never YouTube",stop:"People comment about specific products they spot in the background",share:"Local community shares the video in Ayrshire groups",cta:"Tag someone who needs to sort their bathroom - and come see us any day this week"},
+  {day:4,slot:"Week 1 Sun",type:"Poll Post",hook:"Quick question - which bathroom style are you? Vote below.",angle:"Personalisation / direct audience engagement",format:"Two contrasting style images with a bold poll question",stop:"Polls drive instant comments and reactions from everyone",share:"People share to show their preference to friends and family",cta:"Vote A or B in the comments and tell us why - we will share the results on Friday"},
+  {day:5,slot:"Week 2 Mon",type:"Comparison Post",hook:"Wet wall panels or tiles - here is our completely honest answer after years of selling both.",angle:"Expert honest comparison / trusted advice",format:"Side-by-side photo with a detailed and balanced caption",stop:"Divisive topic - people defend their strong preference in comments",share:"Shared by anyone currently planning a bathroom renovation",cta:"Which side are you on? Comment PANELS or TILES and tell us why"},
+  {day:6,slot:"Week 2 Wed",type:"Customer Story",hook:"She nearly did not come to the showroom. Now she says it was the best decision she made all year.",angle:"Real customer story / powerful social proof",format:"Real customer photos with a full narrative storytelling caption",stop:"Real stories prompt readers to share similar personal experiences",share:"Shared by friends who know people in similar situations",cta:"Has anyone else put off a renovation for years? Tell us your story below"},
+  {day:7,slot:"Week 2 Fri",type:"Community Post",hook:"Proud to be part of the Ayrshire community - and proud of every bathroom we have helped create.",angle:"Local community connection / brand values post",format:"Showroom photo with a warm and genuine community caption",stop:"Local connection invites community members to comment proudly",share:"Shared in Ayrshire community Facebook groups widely",cta:"If you are local and have not visited us yet - we would love to see you. No appointment needed"},
+  {day:8,slot:"Week 2 Sun",type:"Product Spotlight",hook:"LVT flooring is taking over Scottish bathrooms right now - and here is exactly why.",angle:"Product education / trend authority post",format:"Product close-up shots with a detailed educational caption",stop:"Educational content with trend angle invites genuine questions",share:"Shared to home improvement groups across Facebook",cta:"Have you considered LVT for your bathroom? Ask us anything in the comments"},
+  {day:9,slot:"Week 3 Mon",type:"Question Post",hook:"What is the one thing you would change about your bathroom right now? Tell us below.",angle:"Direct audience engagement / market research question",format:"Simple direct question with a beautiful aspirational bathroom image",stop:"Direct personal question is the highest comment driver on Facebook",share:"Shared by people wanting to get their partner or friends opinion",cta:"We read every comment and reply - and sometimes the answers inspire our next renovation"},
+  {day:10,slot:"Week 3 Wed",type:"Behind the Scenes",hook:"Something exciting just arrived in our showroom - first look before it hits the floor.",angle:"New stock reveal / FOMO / exclusivity post",format:"Arrival photos from stock delivery day with a teaser caption",stop:"Curiosity about new products drives comments asking for details",share:"Shared by local followers who want to be first to see it",cta:"Comment NEWSTOCK and we will tag you when it is on the showroom floor"},
+  {day:11,slot:"Week 3 Fri",type:"Price Reveal",hook:"A full new bathroom for under 2,000 pounds. We know. Here is the complete breakdown.",angle:"Price transparency / affordability proof post",format:"Multiple photos with an itemised price breakdown in caption",stop:"Price reveal always generates comments, reactions and shares",share:"Shared by anyone who thought a new bathroom was unaffordable",cta:"Tag someone who keeps saying a new bathroom costs a fortune - show them this"},
+  {day:12,slot:"Week 3 Sun",type:"Tip Post",hook:"The bathroom lighting mistake most people make - and the simple fix that costs almost nothing.",angle:"Expert tip / practical home improvement advice",format:"Before-after lighting photo with a detailed tip in caption",stop:"Practical tips generate saves and genuinely grateful comments",share:"Shared to home improvement and interiors groups",cta:"Save this post - and tell us if you have made this mistake in the comments"},
+  {day:13,slot:"Week 4 Mon",type:"Facebook Live Promo",hook:"Joining us live from the showroom floor this Thursday at 7pm - bring your bathroom questions.",angle:"Live event announcement / community engagement",format:"Showroom photo with clear live event details and time",stop:"People comment questions in advance to make sure they get answered",share:"Shared by followers who want their friends to join the live",cta:"Drop your question below and we will make sure we answer it live on Thursday"},
+  {day:14,slot:"Week 4 Wed",type:"Review Spotlight",hook:"We received this review this week and it genuinely made our whole team smile.",angle:"Social proof / customer appreciation post",format:"Screenshot of review with a genuine context caption",stop:"People react and comment to share the warmth and positivity",share:"Shared by customers who know the reviewer personally",cta:"If you have visited our showroom we would love your review - it means everything to a local business"},
+  {day:15,slot:"Week 4 Fri",type:"Facebook Live",hook:"Live from the Irvine showroom right now - answering your bathroom renovation questions.",angle:"Real-time engagement / expert authority moment",format:"Facebook Live broadcast from the showroom floor",stop:"Live comments and questions flood in during the broadcast",share:"Shared by viewers to get more people to join and ask questions",cta:"Drop your question in the live comments - we are answering everything right now"},
+  {day:16,slot:"Week 4 Sun",type:"Trend Post",hook:"The bathroom trend that started quietly in Scotland and is now in every showroom we visit.",angle:"Trend authority / style leadership post",format:"Trend product photos with context and history in caption",stop:"People comment their opinions and whether they love or hate the trend",share:"Interior design followers share this format very widely",cta:"Are you into this trend or is it not for you? Tell us in the comments"},
+  {day:17,slot:"Week 5 Mon",type:"Myth Buster",hook:"Myth: a beautiful bathroom always costs a fortune. Here is the truth from someone who sells them every day.",angle:"Expert myth-busting / removing price barrier",format:"Bold myth statement headline with real price-proof photos",stop:"People comment their own assumptions to have them corrected",share:"Shared by anyone who believed the myth and wants to spread the truth",cta:"What did you assume about bathroom renovation costs? Tell us below and we will give you the honest answer"},
+  {day:18,slot:"Week 5 Wed",type:"Product Education",hook:"Everything you need to know about shower enclosures before you buy - save this.",angle:"Detailed buyer education / purchase confidence post",format:"Comprehensive educational post with real product photos",stop:"Specific questions from buyers who are ready to purchase",share:"Saved and shared to renovation planning groups",cta:"Save this post and bring these questions to us - we stock every style mentioned here"},
+  {day:19,slot:"Week 5 Fri",type:"Staff Spotlight",hook:"Meet Sarah from our showroom team - the person most likely to find your perfect bathroom.",angle:"Human connection / team trust-building post",format:"Staff photo with a warm personal introduction caption",stop:"People engage with real named people far more than with brands",share:"Local community shares the familiar face they recognise",cta:"What would you ask Sarah about your bathroom renovation? Drop your question below"},
+  {day:20,slot:"Week 5 Sun",type:"Deal Teaser",hook:"Something special happening in our Irvine showroom this weekend - stay tuned for details.",angle:"Urgency / anticipation / FOMO builder",format:"Teaser image with deliberately exciting but vague caption",stop:"Curiosity drives comments asking for more details immediately",share:"Shared so that friends and family do not miss the deal",cta:"Comment DEAL and we will send you the details as soon as we can share them"},
+  {day:21,slot:"Week 6 Mon",type:"Full Transformation",hook:"Two days. One couple. One completely transformed bathroom. And a total they are still smiling about.",angle:"Full narrative transformation / powerful social proof",format:"Multiple photos with an extended personal storytelling caption",stop:"Full stories generate the most comments on Facebook consistently",share:"Most shareable single format in the home improvement niche",cta:"What is your favourite part of this transformation? And what has been stopping you from doing yours?"},
+  {day:22,slot:"Week 6 Wed",type:"Community Share",hook:"We loved seeing this local renovation - shoutout to the team behind it.",angle:"Community celebration / reciprocal sharing post",format:"Reshared local renovation content with a warm caption",stop:"Community pride drives strong comments and genuine reactions",share:"Reciprocal shares from the featured community members",cta:"Know someone who has done a brilliant renovation locally? Tag them below"},
+  {day:23,slot:"Week 6 Fri",type:"Checklist Post",hook:"Your complete bathroom renovation checklist for Scottish homeowners - save this before you start.",angle:"Practical planning value / essential resource post",format:"Numbered checklist with bold clear steps in caption",stop:"Practical value drives saves and genuinely grateful comments",share:"Shared to renovation planning groups across Ayrshire",cta:"Save this checklist and visit us in Irvine when you are ready to start ticking things off"},
+  {day:24,slot:"Week 6 Sun",type:"Weekend Deal",hook:"This weekend only in our Irvine showroom - here is what we are offering.",angle:"Local urgency / weekend footfall driver post",format:"Clear deal details with an appealing showroom photo",stop:"People comment asking for more information about the deal",share:"Shared in local Ayrshire Facebook community groups",cta:"Tag someone who has been putting off their bathroom - this weekend is the time to come in"},
+  {day:25,slot:"Week 7 Mon",type:"Debate Post",hook:"Freestanding bath or fitted suite - which team are you on? This one always divides the room.",angle:"Friendly debate / highest comment driver format",format:"Two contrasting style photos with a debate-framing caption",stop:"Friendly debates are one of the strongest comment drivers on Facebook",share:"People share to get their friends and family's opinions",cta:"Comment FREESTANDING or FITTED - and tell us why. We will share the results on Friday"},
+  {day:26,slot:"Week 7 Wed",type:"Month Review",hook:"The 5 products our customers bought most this month - and why each one is worth it.",angle:"Social proof / bestseller authority post",format:"Product photos in a ranked list format with caption detail",stop:"People comment asking about products they recognise or considered",share:"Saved for future product research by active buyers",cta:"Have you got any of these in your bathroom already? Tell us what you think below"},
+  {day:27,slot:"Week 7 Fri",type:"Native Video Tip",hook:"30-second tip for anyone planning a bathroom renovation this year - watch to the end.",angle:"Educational short video / expert positioning",format:"Short tip video uploaded directly to Facebook - never shared",stop:"People comment their own tips and renovation experiences",share:"Facebook algorithm pushes native video to far more feeds",cta:"Save this tip and share it with anyone who is planning a renovation this year"},
+  {day:28,slot:"Week 7 Sun",type:"Long Testimonial",hook:"This is the review that made our whole showroom team stop and read it out loud.",angle:"Authentic long-form social proof post",format:"Full testimonial screenshot with the full story as context",stop:"Authentic emotional reviews drive the highest engagement on Facebook",share:"Shared by customers who relate deeply to the story they read",cta:"If you have visited us we would genuinely love a review - it makes all the difference"},
+  {day:29,slot:"Week 8 Mon",type:"New Arrival",hook:"Just arrived in our Irvine showroom and it is already getting attention - come and see.",angle:"New stock excitement / local FOMO post",format:"Real arrival photos with an exciting product teaser caption",stop:"Curiosity drives comments asking for details and pricing",share:"Shared in local community groups so friends get first pick",cta:"Comment NEWSTOCK and we will DM you the full details and pricing"},
+  {day:30,slot:"Week 8 Wed",type:"Reflection Post",hook:"A month of sharing our bathroom expertise with this community - and we are just getting started.",angle:"Brand reflection / genuine community gratitude",format:"Warm reflection caption with an authentic showroom photo",stop:"Warmth and real gratitude drive positive engagement and loyalty",share:"Business community sharing and genuine support",cta:"Thank you for following us and trusting us. What would you like to see more of from us?"},
+];
+
+const igHooks = [
+  {n:1,cat:"Before/After",hook:"This bathroom cost less than a new sofa",type:"Reel"},
+  {n:2,cat:"Before/After",hook:"POV: your bathroom goes from embarrassing to incredible in 48 hours",type:"Reel"},
+  {n:3,cat:"Before/After",hook:"This is what 2,000 pounds looks like in a Scottish bathroom right now",type:"Reel"},
+  {n:4,cat:"Before/After",hook:"They hated their bathroom. Now they cannot stop showing it off",type:"Reel"},
+  {n:5,cat:"Before/After",hook:"The before was bad. The after is unreal. Swipe to see",type:"Carousel"},
+  {n:6,cat:"Before/After",hook:"This tiny bathroom transformation will make you rethink everything",type:"Reel"},
+  {n:7,cat:"Before/After",hook:"Nobody believed this was the same room. Watch",type:"Reel"},
+  {n:8,cat:"Before/After",hook:"From damp and dark to bright and beautiful in one weekend",type:"Reel"},
+  {n:9,cat:"Before/After",hook:"The 800 pound bathroom makeover everyone is asking about",type:"Reel"},
+  {n:10,cat:"Before/After",hook:"This is what a real bathroom renovation looks like start to finish",type:"Reel"},
+  {n:11,cat:"Before/After",hook:"She cried when she saw the finished result. Here is why",type:"Reel"},
+  {n:12,cat:"Before/After",hook:"The difference between a 5,000 pound bathroom and a 1,500 one is smaller than you think",type:"Carousel"},
+  {n:13,cat:"Before/After",hook:"What happens when you replace tiles with wet wall panels - watch closely",type:"Reel"},
+  {n:14,cat:"Before/After",hook:"Before: every guest avoided the bathroom. After: they ask for the tour",type:"Carousel"},
+  {n:15,cat:"Before/After",hook:"The most dramatic bathroom glow-up we have ever done - and it is affordable",type:"Reel"},
+  {n:16,cat:"Price",hook:"Stop spending thousands on a bathroom renovation. Do this instead",type:"Reel"},
+  {n:17,cat:"Price",hook:"This full bathroom suite costs less than a weekend away",type:"Post"},
+  {n:18,cat:"Price",hook:"The reason your bathroom quote is too high - and what to do about it",type:"Carousel"},
+  {n:19,cat:"Price",hook:"Proof that a beautiful bathroom does not have to cost a fortune",type:"Post"},
+  {n:20,cat:"Price",hook:"How to get a showroom-quality bathroom on a real-life budget",type:"Carousel"},
+  {n:21,cat:"Price",hook:"We buy in bulk so you do not have to overpay. Here is what that means for you",type:"Reel"},
+  {n:22,cat:"Price",hook:"The honest price breakdown of a complete bathroom renovation in Scotland",type:"Carousel"},
+  {n:23,cat:"Price",hook:"You are probably overpaying for your bathroom supplies. Here is the truth",type:"Reel"},
+  {n:24,cat:"Price",hook:"1,200 pounds. Brand new bathroom. Full showroom quality. See it",type:"Reel"},
+  {n:25,cat:"Price",hook:"Why we can offer prices nobody else in Ayrshire can match",type:"Reel"},
+  {n:26,cat:"Price",hook:"The bathroom that looks like it cost 5k - it did not",type:"Reel"},
+  {n:27,cat:"Price",hook:"Affordable does not mean cheap. Let us prove it",type:"Post"},
+  {n:28,cat:"Price",hook:"This bathroom would cost 4,000 pounds elsewhere. We did it for 1,700",type:"Reel"},
+  {n:29,cat:"Price",hook:"The budget bathroom trend everyone is jumping on - and it is stunning",type:"Reel"},
+  {n:30,cat:"Price",hook:"Your dream bathroom is cheaper than your last holiday. Seriously",type:"Post"},
+  {n:31,cat:"Education",hook:"The wet wall panel mistake 90 percent of homeowners make",type:"Carousel"},
+  {n:32,cat:"Education",hook:"Why your shower screen is making your bathroom look smaller",type:"Reel"},
+  {n:33,cat:"Education",hook:"3 things to check before you buy any bathroom furniture",type:"Carousel"},
+  {n:34,cat:"Education",hook:"The truth about LVT flooring in bathrooms nobody tells you",type:"Reel"},
+  {n:35,cat:"Education",hook:"This is the difference between PVC and solid core wet wall. It matters",type:"Carousel"},
+  {n:36,cat:"Education",hook:"Why timber wet wall panels are having a moment right now",type:"Post"},
+  {n:37,cat:"Education",hook:"The shower tray size most people get wrong - do not make this mistake",type:"Reel"},
+  {n:38,cat:"Education",hook:"Everything you need to know about bathroom brassware in 60 seconds",type:"Reel"},
+  {n:39,cat:"Education",hook:"Why your bathroom mirror is the most underrated upgrade you can make",type:"Post"},
+  {n:40,cat:"Education",hook:"Heated towel rails vs standard radiators - the honest truth",type:"Carousel"},
+  {n:41,cat:"Education",hook:"The one product that makes a cheap bathroom look expensive",type:"Reel"},
+  {n:42,cat:"Education",hook:"How to choose bathroom lighting without making it look clinical",type:"Carousel"},
+  {n:43,cat:"Education",hook:"What no one tells you about PVC ceiling panels in bathrooms",type:"Reel"},
+  {n:44,cat:"Education",hook:"The reason your grout always goes mouldy - and how to avoid it forever",type:"Reel"},
+  {n:45,cat:"Education",hook:"How to layer bathroom accessories to get the designer look",type:"Carousel"},
+  {n:46,cat:"Curiosity",hook:"Wait - is that a wet wall panel? It looks exactly like marble",type:"Reel"},
+  {n:47,cat:"Curiosity",hook:"Nobody expects a bathroom this beautiful from a showroom in Irvine",type:"Post"},
+  {n:48,cat:"Curiosity",hook:"This bathroom product changed everything for us this year",type:"Reel"},
+  {n:49,cat:"Curiosity",hook:"The most underrated bathroom upgrade you have probably never heard of",type:"Reel"},
+  {n:50,cat:"Curiosity",hook:"We are not supposed to tell you this about bathroom pricing - but we will",type:"Reel"},
+  {n:51,cat:"Curiosity",hook:"I walked into the showroom not expecting much. Then I saw this",type:"Reel"},
+  {n:52,cat:"Curiosity",hook:"The product our customers keep coming back to buy again and again",type:"Post"},
+  {n:53,cat:"Curiosity",hook:"This is what is trending in bathrooms right now in Scotland",type:"Reel"},
+  {n:54,cat:"Curiosity",hook:"I did not believe it either until I saw it in person",type:"Reel"},
+  {n:55,cat:"Curiosity",hook:"The bathroom trend designers are obsessed with - available right now",type:"Post"},
+  {n:56,cat:"Curiosity",hook:"Strangest question we have been asked in the showroom - and the answer",type:"Reel"},
+  {n:57,cat:"Curiosity",hook:"Nobody is talking about this bathroom accessory. They should be",type:"Reel"},
+  {n:58,cat:"Curiosity",hook:"We got asked the same question 27 times this week - here is the answer",type:"Reel"},
+  {n:59,cat:"Curiosity",hook:"The product that sold out twice this month - we just got more in",type:"Post"},
+  {n:60,cat:"Curiosity",hook:"Why our most popular product is not the one you would expect",type:"Reel"},
+  {n:61,cat:"Aspiration",hook:"Imagine starting every morning in a bathroom you actually love",type:"Post"},
+  {n:62,cat:"Aspiration",hook:"Your bathroom should make you feel like a hotel guest - here is how",type:"Carousel"},
+  {n:63,cat:"Aspiration",hook:"The feeling of walking into a brand new bathroom is indescribable. This is it",type:"Reel"},
+  {n:64,cat:"Aspiration",hook:"You deserve a bathroom that makes you happy. It is more affordable than you think",type:"Post"},
+  {n:65,cat:"Aspiration",hook:"Guests will ask who did your bathroom. You will smile and tell them",type:"Post"},
+  {n:66,cat:"Aspiration",hook:"Your bathroom is the one room that is just for you. Make it count",type:"Post"},
+  {n:67,cat:"Aspiration",hook:"This is what it feels like to finally stop tolerating your bathroom",type:"Reel"},
+  {n:68,cat:"Aspiration",hook:"She said she cried the first time she used her new shower. We get it",type:"Reel"},
+  {n:69,cat:"Aspiration",hook:"The moment you realise your home can look this good changes everything",type:"Post"},
+  {n:70,cat:"Aspiration",hook:"Your morning routine changes completely when your bathroom looks like this",type:"Reel"},
+  {n:71,cat:"Aspiration",hook:"Nobody should dread walking into their own bathroom. Let us fix that",type:"Post"},
+  {n:72,cat:"Aspiration",hook:"This is the bathroom your family deserves",type:"Post"},
+  {n:73,cat:"Aspiration",hook:"The pride of walking guests into a beautiful bathroom is something else",type:"Post"},
+  {n:74,cat:"Aspiration",hook:"You have been putting off the bathroom for too long. This is the sign",type:"Post"},
+  {n:75,cat:"Aspiration",hook:"It is not just a bathroom renovation. It is how you start every single day",type:"Reel"},
+  {n:76,cat:"Local/Proof",hook:"Why Ayrshire homeowners keep coming back to our Irvine showroom",type:"Post"},
+  {n:77,cat:"Local/Proof",hook:"Real customer, real budget, real result - see it",type:"Reel"},
+  {n:78,cat:"Local/Proof",hook:"We have helped over 500 Scottish families transform their bathrooms",type:"Reel"},
+  {n:79,cat:"Local/Proof",hook:"Our Irvine showroom just got the biggest delivery of the year - come see",type:"Story"},
+  {n:80,cat:"Local/Proof",hook:"Local bathroom renovation done right - and the family could not be happier",type:"Post"},
+  {n:81,cat:"Local/Proof",hook:"This Ayrshire homeowner said it was the best money she had ever spent",type:"Post"},
+  {n:82,cat:"Local/Proof",hook:"Why we are the bathroom supplier most recommended in Ayrshire",type:"Post"},
+  {n:83,cat:"Local/Proof",hook:"Our customers said this was worth every penny - and they did not spend much",type:"Post"},
+  {n:84,cat:"Local/Proof",hook:"This is what Irvine homeowners are putting in their bathrooms right now",type:"Reel"},
+  {n:85,cat:"Local/Proof",hook:"The contractor who brings every client to our showroom - here is why",type:"Reel"},
+  {n:86,cat:"Local/Proof",hook:"See what our customers are saying about their new bathrooms this month",type:"Carousel"},
+  {n:87,cat:"Local/Proof",hook:"From our showroom floor to your home - a real Ayrshire renovation story",type:"Reel"},
+  {n:88,cat:"Local/Proof",hook:"This couple drove 40 minutes to visit us. They said it was worth it",type:"Post"},
+  {n:89,cat:"Local/Proof",hook:"New 5-star review just in - and it made our day",type:"Post"},
+  {n:90,cat:"Local/Proof",hook:"Local business, real prices, no nonsense - this is what we are about",type:"Post"},
+  {n:91,cat:"Urgency",hook:"This product will not be at this price for long - here is what to know",type:"Story"},
+  {n:92,cat:"Urgency",hook:"We just got new stock in - and it is already moving fast",type:"Story"},
+  {n:93,cat:"Urgency",hook:"This weekend only - visit the showroom and get this exclusive deal",type:"Story"},
+  {n:94,cat:"Urgency",hook:"Limited stock just landed - see it before it goes",type:"Story"},
+  {n:95,cat:"Urgency",hook:"Book your showroom visit this week and take advantage of our current pricing",type:"Post"},
+  {n:96,cat:"Urgency",hook:"The sale nobody knows about yet - it starts today",type:"Story"},
+  {n:97,cat:"Urgency",hook:"We are running a deal we cannot advertise publicly - DM us",type:"Story"},
+  {n:98,cat:"Urgency",hook:"New arrivals just hit the showroom floor - want first look?",type:"Story"},
+  {n:99,cat:"Urgency",hook:"January renovation season is coming - here is how to prepare now",type:"Carousel"},
+  {n:100,cat:"Urgency",hook:"Your new bathroom could be installed before Christmas. Here is how",type:"Carousel"},
+];
+
+const fbHooks = [
+  {n:101,cat:"Story Opener",hook:"Four years she walked past a bathroom she was ashamed of. Last week, everything changed.",type:"Photo Post"},
+  {n:102,cat:"Story Opener",hook:"He came in with a budget of 1,500 pounds and walked out knowing exactly what his new bathroom would look like.",type:"Photo Post"},
+  {n:103,cat:"Story Opener",hook:"She nearly did not come to the showroom. Now she says it was the best decision she made all year.",type:"Photo Post"},
+  {n:104,cat:"Story Opener",hook:"It started as a quick browse around the showroom. It ended with the bathroom she had always wanted.",type:"Photo Post"},
+  {n:105,cat:"Story Opener",hook:"They had three quotes. All of them felt too expensive. Then they found us.",type:"Photo Post"},
+  {n:106,cat:"Story Opener",hook:"This Kilmarnock family had not touched their bathroom in 12 years. Here is what we helped them do.",type:"Photo Post"},
+  {n:107,cat:"Story Opener",hook:"He wanted to surprise his wife. We helped him plan every detail without her finding out.",type:"Photo Post"},
+  {n:108,cat:"Story Opener",hook:"She said she had cried when she saw the finished bathroom. We completely understood.",type:"Photo Post"},
+  {n:109,cat:"Story Opener",hook:"Two days. One weekend. One completely transformed bathroom. Here is the full story.",type:"Photo Post"},
+  {n:110,cat:"Story Opener",hook:"They thought a beautiful bathroom was out of reach. It was not even close.",type:"Photo Post"},
+  {n:111,cat:"Story Opener",hook:"This is the renovation that got shared 200 times in our community. See why.",type:"Photo Post"},
+  {n:112,cat:"Story Opener",hook:"When she sent us the after photos, we could not believe it was the same room.",type:"Photo Post"},
+  {n:113,cat:"Story Opener",hook:"The builder said it was one of the best bathroom packages he had ever worked with.",type:"Photo Post"},
+  {n:114,cat:"Story Opener",hook:"He had been putting it off for three years. After 20 minutes in our showroom, every decision was made.",type:"Photo Post"},
+  {n:115,cat:"Story Opener",hook:"This bathroom journey started with a question in our showroom. Here is where it ended up.",type:"Photo Post"},
+  {n:116,cat:"Price/Value",hook:"A full new bathroom for under 2,000 pounds. We know. Here is the proof.",type:"Photo Post"},
+  {n:117,cat:"Price/Value",hook:"The reason your bathroom renovation quote is higher than it needs to be.",type:"Educational Post"},
+  {n:118,cat:"Price/Value",hook:"This is what 1,400 pounds looks like when you buy smart.",type:"Photo Post"},
+  {n:119,cat:"Price/Value",hook:"We are not the cheapest. We are just better value than anyone else in Ayrshire.",type:"Post"},
+  {n:120,cat:"Price/Value",hook:"Want to know why we can offer prices nobody else in the area can match? Here is the honest answer.",type:"Educational Post"},
+  {n:121,cat:"Price/Value",hook:"She had a budget of 1,200 pounds. We helped her get everything on her list - and still had change.",type:"Photo Post"},
+  {n:122,cat:"Price/Value",hook:"The biggest misconception about bathroom renovations: that they have to be expensive.",type:"Educational Post"},
+  {n:123,cat:"Price/Value",hook:"We buy in huge volumes through Annick Bathrooms. That buying power goes directly to your price.",type:"Post"},
+  {n:124,cat:"Price/Value",hook:"A beautiful bathroom does not need a five-figure budget. It needs the right supplier.",type:"Post"},
+  {n:125,cat:"Price/Value",hook:"Here is the honest breakdown of what a complete bathroom renovation costs in Scotland in 2025.",type:"Educational Post"},
+  {n:126,cat:"Price/Value",hook:"800 pounds all in - yes, really. Here is what you get.",type:"Photo Post"},
+  {n:127,cat:"Price/Value",hook:"They got a full suite, wet wall panels, and an LVT floor for under 1,500 pounds.",type:"Photo Post"},
+  {n:128,cat:"Price/Value",hook:"This is why we tell every customer to come to us before accepting any other quote.",type:"Post"},
+  {n:129,cat:"Price/Value",hook:"If you have been quoted over 3,000 pounds for a bathroom renovation, read this before you sign anything.",type:"Educational Post"},
+  {n:130,cat:"Price/Value",hook:"Your dream bathroom is closer - and cheaper - than you think.",type:"Post"},
+  {n:131,cat:"Local/Community",hook:"Proud to be Ayrshire's most trusted bathroom showroom. Here is what that means to us.",type:"Post"},
+  {n:132,cat:"Local/Community",hook:"Another Irvine family with a bathroom they love. This never gets old.",type:"Photo Post"},
+  {n:133,cat:"Local/Community",hook:"We have been serving North Ayrshire homeowners for years. This is one of our favourite stories.",type:"Photo Post"},
+  {n:134,cat:"Local/Community",hook:"From our Irvine showroom to a family home in Ardrossan - a bathroom transformation.",type:"Photo Post"},
+  {n:135,cat:"Local/Community",hook:"Ayrshire, if you have not visited our showroom yet, this is your reason to come.",type:"Post"},
+  {n:136,cat:"Local/Community",hook:"This week we helped a local couple finally sort the bathroom they had been putting off for years.",type:"Photo Post"},
+  {n:137,cat:"Local/Community",hook:"We love being part of this community. And we love showing what is possible for local homeowners.",type:"Post"},
+  {n:138,cat:"Local/Community",hook:"Local family, local supplier, brilliant result. This is what Ayrshire bathroom renovations look like.",type:"Photo Post"},
+  {n:139,cat:"Local/Community",hook:"We know Ayrshire homeowners have high standards. That is exactly why we stock what we do.",type:"Post"},
+  {n:140,cat:"Local/Community",hook:"Tradespeople across Ayrshire keep bringing their clients to us. Here is why.",type:"Post"},
+  {n:141,cat:"Local/Community",hook:"Another five-star review from a local customer - and this one made us smile.",type:"Post"},
+  {n:142,cat:"Local/Community",hook:"This Irvine couple could not be happier with their new bathroom. Come and see what we did.",type:"Photo Post"},
+  {n:143,cat:"Local/Community",hook:"We are proud of every bathroom that leaves our showroom and goes into an Ayrshire home.",type:"Post"},
+  {n:144,cat:"Local/Community",hook:"If you are local and renovating, please come and see us before you buy anywhere else.",type:"Post"},
+  {n:145,cat:"Local/Community",hook:"Serving Irvine, Kilmarnock, Ayr, Ardrossan, and beyond - this is what we are here for.",type:"Post"},
+  {n:146,cat:"Education",hook:"Before you buy a single bathroom product, there are five things you need to know.",type:"Educational Post"},
+  {n:147,cat:"Education",hook:"The wet wall panel question we get asked every single week - finally answered properly.",type:"Educational Post"},
+  {n:148,cat:"Education",hook:"LVT flooring in a bathroom: everything you need to know before you decide.",type:"Educational Post"},
+  {n:149,cat:"Education",hook:"Why your shower screen is making your bathroom look smaller - and the fix.",type:"Educational Post"},
+  {n:150,cat:"Education",hook:"The difference between PVC and solid core wet wall panels - and why it matters.",type:"Educational Post"},
+  {n:151,cat:"Education",hook:"Three bathroom mistakes that are incredibly common and completely avoidable.",type:"Educational Post"},
+  {n:152,cat:"Education",hook:"The most underrated bathroom upgrade you can make - and it costs less than 200 pounds.",type:"Post"},
+  {n:153,cat:"Education",hook:"Everything your bathroom quote should include - and what to ask if it does not.",type:"Educational Post"},
+  {n:154,cat:"Education",hook:"Why timber wet wall panels are the most popular product in our showroom right now.",type:"Post"},
+  {n:155,cat:"Education",hook:"The shower tray size most people get wrong - and how to get it right.",type:"Educational Post"},
+  {n:156,cat:"Education",hook:"Your bathroom lighting is probably doing more harm than good. Here is why.",type:"Educational Post"},
+  {n:157,cat:"Education",hook:"The honest truth about PVC ceiling panels - when they work and when they do not.",type:"Educational Post"},
+  {n:158,cat:"Education",hook:"Save this post: the complete bathroom renovation checklist for Scottish homeowners.",type:"Educational Post"},
+  {n:159,cat:"Education",hook:"Brassware: the one part of bathroom design most people leave as an afterthought.",type:"Post"},
+  {n:160,cat:"Education",hook:"Why we always recommend visiting the showroom before finalising any bathroom order.",type:"Post"},
+  {n:161,cat:"Engagement",hook:"What is the one thing you would change about your bathroom right now? Drop it below.",type:"Question Post"},
+  {n:162,cat:"Engagement",hook:"Freestanding bath or fitted suite - which are you? Tell us in the comments.",type:"Poll Post"},
+  {n:163,cat:"Engagement",hook:"If we could only give you one piece of bathroom renovation advice, it would be this.",type:"Post"},
+  {n:164,cat:"Engagement",hook:"Quick poll: would you go light and neutral or bold and dramatic for your new bathroom?",type:"Poll Post"},
+  {n:165,cat:"Engagement",hook:"Tag the person you would most want to redesign a bathroom with.",type:"Post"},
+  {n:166,cat:"Engagement",hook:"What is stopping you from sorting your bathroom? We would love to hear - no judgement.",type:"Question Post"},
+  {n:167,cat:"Engagement",hook:"Which of these two styles would you choose for your bathroom? A or B?",type:"Poll Post"},
+  {n:168,cat:"Engagement",hook:"Hot take: the bathroom is the most important room in the house. Agree?",type:"Question Post"},
+  {n:169,cat:"Engagement",hook:"We asked our team what the most underrated bathroom product is. Here is what they said.",type:"Post"},
+  {n:170,cat:"Engagement",hook:"The most common question we get in the showroom - and the answer might surprise you.",type:"Post"},
+  {n:171,cat:"Engagement",hook:"If you had a 2,000 pound bathroom budget, how would you spend it? Tell us below.",type:"Question Post"},
+  {n:172,cat:"Engagement",hook:"What is the most you have ever spent on a bathroom? And was it worth it?",type:"Question Post"},
+  {n:173,cat:"Engagement",hook:"The bathroom renovation question nobody ever asks - but really should.",type:"Post"},
+  {n:174,cat:"Engagement",hook:"Rate this bathroom out of 10. And tell us what you would change.",type:"Photo Post"},
+  {n:175,cat:"Engagement",hook:"Share this with someone who has been putting off their bathroom renovation.",type:"Photo Post"},
+  {n:176,cat:"Curiosity",hook:"We were not expecting this review. But it made our entire week.",type:"Post"},
+  {n:177,cat:"Curiosity",hook:"Something is arriving in our showroom this week that we have never stocked before.",type:"Post"},
+  {n:178,cat:"Curiosity",hook:"The product that has been selling faster than we can restock it - and why.",type:"Post"},
+  {n:179,cat:"Curiosity",hook:"We almost did not share this transformation. Now we are glad we did.",type:"Photo Post"},
+  {n:180,cat:"Curiosity",hook:"This is not what a 1,600 pound bathroom should look like. Except it is.",type:"Photo Post"},
+  {n:181,cat:"Curiosity",hook:"Our team has been asked the same question 40 times this month. Here is the answer.",type:"Educational Post"},
+  {n:182,cat:"Curiosity",hook:"We just received the biggest single delivery of stock we have ever had. Come and see.",type:"Post"},
+  {n:183,cat:"Curiosity",hook:"This bathroom product has been in our showroom for months. Suddenly, everyone wants it.",type:"Post"},
+  {n:184,cat:"Curiosity",hook:"The renovation that surprised even us - and we have seen a lot of bathrooms.",type:"Photo Post"},
+  {n:185,cat:"Curiosity",hook:"We had a conversation in the showroom yesterday that we keep thinking about.",type:"Post"},
+  {n:186,cat:"Curiosity",hook:"Nobody expected this bathroom to turn out this way. Least of all the homeowner.",type:"Photo Post"},
+  {n:187,cat:"Curiosity",hook:"The bathroom trend that started quietly in Scotland and is now everywhere.",type:"Post"},
+  {n:188,cat:"Curiosity",hook:"We started sharing our renovation stories six months ago. The response has been incredible.",type:"Post"},
+  {n:189,cat:"Curiosity",hook:"One product. One weekend. One completely different bathroom. Here is the story.",type:"Photo Post"},
+  {n:190,cat:"Curiosity",hook:"Our busiest week in the showroom ever - and here is what people were buying.",type:"Post"},
+  {n:191,cat:"Seasonal",hook:"January is the most popular month for bathroom renovations. Here is how to prepare.",type:"Educational Post"},
+  {n:192,cat:"Seasonal",hook:"If you want a new bathroom before Christmas, you need to act now.",type:"Post"},
+  {n:193,cat:"Seasonal",hook:"Spring is the perfect time to finally sort the bathroom. Here is where to start.",type:"Post"},
+  {n:194,cat:"Seasonal",hook:"New year, new bathroom - here is what our most popular starting point looks like.",type:"Photo Post"},
+  {n:195,cat:"Seasonal",hook:"Summer renovation season is coming. Our showroom is ready. Are you?",type:"Post"},
+  {n:196,cat:"Seasonal",hook:"Limited stock just arrived. If you have been waiting for the right moment, this is it.",type:"Post"},
+  {n:197,cat:"Seasonal",hook:"We are running something special this weekend in our Irvine showroom.",type:"Post"},
+  {n:198,cat:"Seasonal",hook:"This deal ends Friday - and we cannot run it again for a while.",type:"Post"},
+  {n:199,cat:"Seasonal",hook:"New arrivals just hit our showroom floor. First come, first served.",type:"Post"},
+  {n:200,cat:"Seasonal",hook:"We have just reviewed our pricing and passed the savings directly on to you. Here is what changed.",type:"Post"},
+];
+
+// ── STATE ────────────────────────────────────────────────────────────────────
+let currentPlatform = 'instagram';
+let currentView = 'grid';
+let currentTypeFilter = 'all';
+let currentSearch = '';
+let selectedPost = null;
+
+// ── TYPE STYLE MAP ────────────────────────────────────────────────────────────
+function typeClass(t) {
+  const map = {
+    'Reel':'type-reel','Carousel':'type-carousel','Post':'type-post',
+    'Story Poll':'type-story-poll','Story Q&A':'type-story-qa','Story':'type-story',
+    'Photo Post':'type-photo-post','Educational Post':'type-edu','Native Video':'type-native-video',
+    'Poll Post':'type-poll','Comparison Post':'type-comparison','Customer Story':'type-customer',
+    'Community Post':'type-community','Product Spotlight':'type-product','Question Post':'type-question',
+    'Behind the Scenes':'type-behind','Price Reveal':'type-price','Facebook Live':'type-live',
+    'Facebook Live Promo':'type-live-promo','Trend Post':'type-trend','Myth Buster':'type-myth',
+    'Staff Spotlight':'type-staff','Deal Teaser':'type-deal','Debate Post':'type-debate',
+    'Review Spotlight':'type-review','Checklist Post':'type-checklist','Reflection Post':'type-reflection',
+    'New Arrival':'type-arrival','Full Transformation':'type-transform','Native Video Tip':'type-native-video',
+    'Tip Post':'type-tip','Long Testimonial':'type-testimonial','Month Review':'type-review',
+    'Weekend Deal':'type-deal','Community Share':'type-community',
+  };
+  return map[t] || 'type-post';
+}
+
+function catClass(c) {
+  const map = {
+    'Before/After':'cat-ba','Price':'cat-price','Education':'cat-edu','Curiosity':'cat-cur',
+    'Aspiration':'cat-asp','Local/Proof':'cat-local','Urgency':'cat-urg',
+    'Story Opener':'cat-story','Price/Value':'cat-pv','Local/Community':'cat-comm',
+    'Engagement':'cat-eng','Seasonal':'cat-seas',
+  };
+  return map[c] || 'cat-edu';
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────────────
+function getActiveData() {
+  return currentPlatform === 'instagram' ? igData : fbData;
+}
+
+function getFilteredData() {
+  let data = getActiveData();
+  if (currentTypeFilter !== 'all') data = data.filter(p => p.type === currentTypeFilter);
+  if (currentSearch) {
+    const q = currentSearch.toLowerCase();
+    data = data.filter(p =>
+      p.hook.toLowerCase().includes(q) ||
+      p.angle.toLowerCase().includes(q) ||
+      p.format.toLowerCase().includes(q) ||
+      p.cta.toLowerCase().includes(q)
+    );
+  }
+  return data;
+}
+
+function renderFilters() {
+  const data = getActiveData();
+  const types = [...new Set(data.map(p => p.type))].sort();
+  const el = document.getElementById('type-filters');
+  el.innerHTML = types.map(t =>
+    `<button class="filter-chip ${currentTypeFilter===t?'active':''}" onclick="filterType('${t.replace(/'/g,"\\'")}',this)">${t}</button>`
+  ).join('');
+}
+
+function renderStats() {
+  const data = getActiveData();
+  document.getElementById('stat-total').textContent = data.length;
+  const reels = data.filter(p => p.type === 'Reel').length;
+  const carousels = data.filter(p => p.type === 'Carousel').length;
+  const stories = data.filter(p => p.type.toLowerCase().includes('story')).length;
+  document.getElementById('stat-reels').textContent = reels || '-';
+  document.getElementById('stat-carousels').textContent = carousels || '-';
+  document.getElementById('stat-stories').textContent = stories || '-';
+}
+
+function renderGrid(data) {
+  const el = document.getElementById('grid-view');
+  el.innerHTML = '';
+  data.forEach((post, i) => {
+    const div = document.createElement('div');
+    div.className = 'post-card';
+    div.style.animationDelay = (i * 30) + 'ms';
+    div.innerHTML = `
+      <div class="card-header">
+        <div class="day-badge">${post.day}</div>
+        <div class="card-meta">
+          <div class="card-date">${post.slot}</div>
+          <span class="type-pill ${typeClass(post.type)}">${post.type}</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="hook-text">${post.hook}</div>
+        <div class="angle-text">${post.angle}</div>
+        <div class="card-tags">
+          <span class="tag">${post.format.split(' ').slice(0,4).join(' ')}</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <strong>CTA:</strong> ${post.cta.substring(0,90)}${post.cta.length > 90 ? '...' : ''}
+      </div>
+    `;
+    div.onclick = () => openModal(post);
+    el.appendChild(div);
+  });
+}
+
+function renderTable(data) {
+  const tbody = document.getElementById('table-body');
+  tbody.innerHTML = '';
+  data.forEach(post => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><strong style="color:var(--navy)">${post.day}</strong></td>
+      <td style="white-space:nowrap;color:var(--slate-mid);font-size:12px">${post.slot}</td>
+      <td><span class="type-pill ${typeClass(post.type)}" style="font-size:10px">${post.type}</span></td>
+      <td class="hook-col">${post.hook}</td>
+      <td style="font-size:12px;color:var(--slate-mid);max-width:200px">${post.angle}</td>
+      <td style="font-size:12px;color:var(--slate-mid);max-width:180px">${post.format}</td>
+      <td class="cta-col">${post.cta}</td>
+    `;
+    tr.style.cursor = 'pointer';
+    tr.onclick = () => openModal(post);
+    tbody.appendChild(tr);
+  });
+}
+
+function renderHooks() {
+  const el = document.getElementById('hooks-view');
+  el.innerHTML = '';
+  const hooks = currentPlatform === 'instagram' ? igHooks : fbHooks;
+  const filtered = currentSearch
+    ? hooks.filter(h => h.hook.toLowerCase().includes(currentSearch.toLowerCase()) || h.cat.toLowerCase().includes(currentSearch.toLowerCase()))
+    : hooks;
+
+  filtered.forEach((h, i) => {
+    const div = document.createElement('div');
+    div.className = 'hook-card';
+    div.style.animationDelay = (i * 20) + 'ms';
+    div.innerHTML = `
+      <div class="hook-meta">
+        <span class="hook-num">${h.n}</span>
+        <span class="type-pill ${catClass(h.cat)}">${h.cat}</span>
+        <span class="type-pill ${typeClass(h.type)}" style="font-size:10px">${h.type}</span>
+      </div>
+      <div class="hook-text-main">${h.hook}</div>
+      <div class="hook-actions">
+        <button class="copy-btn" onclick="copyText('${h.hook.replace(/'/g,"\\'")}', this)">&#128203; Copy hook</button>
+      </div>
+    `;
+    el.appendChild(div);
+  });
+}
+
+function render() {
+  const data = getFilteredData();
+  const isEmpty = data.length === 0;
+  const isHooks = currentPlatform === 'hooks';
+
+  document.getElementById('grid-view').classList.toggle('hidden', currentView !== 'grid' || isHooks);
+  document.getElementById('table-view').classList.toggle('hidden', currentView !== 'table' || isHooks);
+  document.getElementById('hooks-view').classList.toggle('hidden', !isHooks);
+  document.getElementById('empty-state').classList.toggle('hidden', !isEmpty || isHooks);
+  document.getElementById('stats-bar').classList.toggle('hidden', isHooks);
+  document.getElementById('filters-bar').classList.toggle('hidden', false);
+  document.getElementById('view-tabs').classList.toggle('hidden', isHooks);
+
+  if (isHooks) {
+    renderHooks();
+    return;
+  }
+
+  renderStats();
+  renderFilters();
+
+  if (!isEmpty) {
+    if (currentView === 'grid') renderGrid(data);
+    else renderTable(data);
+  }
+}
+
+// ── CONTROLS ──────────────────────────────────────────────────────────────────
+function setPlatform(p) {
+  currentPlatform = p;
+  currentTypeFilter = 'all';
+  currentSearch = '';
+  document.getElementById('search-input').value = '';
+  document.querySelectorAll('.platform-tab').forEach((t, i) => {
+    t.classList.toggle('active', ['instagram','facebook','hooks'][i] === p);
+  });
+  render();
+}
+
+function setView(v) {
+  currentView = v;
+  document.querySelectorAll('.view-tab').forEach((t, i) => {
+    t.classList.toggle('active', ['grid','table'][i] === v);
+  });
+  render();
+}
+
+function filterType(type, btn) {
+  currentTypeFilter = type;
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function filterSearch(q) {
+  currentSearch = q;
+  render();
+}
+
+// ── MODAL ─────────────────────────────────────────────────────────────────────
+function openModal(post) {
+  selectedPost = post;
+  document.getElementById('modal-day').textContent = post.day;
+  document.getElementById('modal-date').textContent = post.slot;
+  document.getElementById('modal-type-pill').innerHTML =
+    `<span class="type-pill ${typeClass(post.type)}">${post.type}</span>`;
+  document.getElementById('modal-hook').textContent = post.hook;
+  document.getElementById('modal-angle').textContent = post.angle;
+  document.getElementById('modal-format').textContent = post.format;
+  document.getElementById('modal-stop').textContent = post.stop;
+  document.getElementById('modal-share').textContent = post.share;
+  document.getElementById('modal-cta').textContent = post.cta;
+  document.getElementById('copy-cta-btn').className = 'copy-btn';
+  document.getElementById('copy-cta-btn').textContent = '\u{1F4CB} Copy CTA to clipboard';
+  document.getElementById('overlay').classList.add('open');
+}
+
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('overlay')) {
+    document.getElementById('overlay').classList.remove('open');
+  }
+}
+
+function copyCTA() {
+  if (!selectedPost) return;
+  navigator.clipboard.writeText(selectedPost.cta).then(() => {
+    const btn = document.getElementById('copy-cta-btn');
+    btn.className = 'copy-btn copied';
+    btn.textContent = 'Copied!';
+    setTimeout(() => {
+      btn.className = 'copy-btn';
+      btn.textContent = '\u{1F4CB} Copy CTA to clipboard';
+    }, 2000);
+  });
+}
+
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.className = 'copy-btn copied';
+    btn.textContent = 'Copied!';
+    setTimeout(() => {
+      btn.className = 'copy-btn';
+      btn.textContent = '\u{1F4CB} Copy hook';
+    }, 2000);
+  });
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+render();
+</script>
+</body>
+</html>
