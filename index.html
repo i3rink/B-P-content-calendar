@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Social Media Planner</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#0f2544;--blue:#1d4ed8;--teal:#0f766e;--teal-lt:#f0fdfa;--amber:#b45309;--slate:#1e293b;--slate-mid:#64748b;--slate-lt:#f8fafc;--border:#e2e8f0;--white:#fff;--sh:0 1px 3px rgba(0,0,0,.07),0 4px 16px rgba(0,0,0,.05);--sh-lg:0 8px 32px rgba(0,0,0,.12)}
+:root{--navy:#0f2544;--annick:#4895d0;--bp:#f2672a;--blue:#1d4ed8;--teal:#0f766e;--teal-lt:#f0fdfa;--amber:#b45309;--slate:#1e293b;--slate-mid:#64748b;--slate-lt:#f8fafc;--border:#e2e8f0;--white:#fff;--sh:0 1px 3px rgba(0,0,0,.07),0 4px 16px rgba(0,0,0,.05);--sh-lg:0 8px 32px rgba(0,0,0,.12)}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:#f1f5f9;color:var(--slate);min-height:100vh}
 .hdr{background:var(--navy);position:sticky;top:0;z-index:100;box-shadow:var(--sh-lg)}
 .hdr-inner{max-width:1440px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.brand-name{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#fff}
+.brand-name{font-family:'Manrope',sans-serif;font-size:18px;font-weight:800;color:#fff}
 .brand-sub{font-size:10px;color:#93c5fd;letter-spacing:.6px;text-transform:uppercase}
 .tabs{display:flex;gap:3px;background:rgba(255,255,255,.08);border-radius:10px;padding:3px}
 .tab{padding:6px 14px;border-radius:7px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:500;transition:all .2s;color:rgba(255,255,255,.5);background:transparent}
@@ -20,13 +20,13 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#f1f5f9;color:var(--s
 .view-btns{display:flex;gap:3px}
 .vbtn{padding:6px 12px;border-radius:7px;border:1px solid rgba(255,255,255,.18);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;color:rgba(255,255,255,.6);background:transparent;transition:all .15s}
 .vbtn.active{background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.35)}
-.regen-btn{padding:7px 14px;border-radius:8px;border:none;cursor:pointer;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;background:#1d4ed8;color:#fff;transition:all .2s;margin-left:auto;white-space:nowrap}
+.regen-btn{padding:7px 14px;border-radius:8px;border:none;cursor:pointer;font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;background:#1d4ed8;color:#fff;transition:all .2s;margin-left:auto;white-space:nowrap}
 .regen-btn:hover{background:#1e40af}
 .main{max-width:1440px;margin:0 auto;padding:24px}
 .banner{border-radius:14px;padding:18px 22px;margin-bottom:20px;display:flex;align-items:center;gap:16px;justify-content:space-between;flex-wrap:wrap}
-.banner.annick{background:linear-gradient(120deg,#0f2544 0%,#1d4ed8 100%)}
-.banner.bp{background:linear-gradient(120deg,#0f766e 0%,#0d9488 100%)}
-.banner-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff}
+.banner.annick{background:#4895d0}
+.banner.bp{background:#f2672a}
+.banner-title{font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#fff}
 .banner-sub{font-size:12px;color:rgba(255,255,255,.7);margin-top:2px}
 .banner-pill{background:rgba(255,255,255,.15);color:#fff;border-radius:20px;padding:4px 12px;font-size:11px;font-weight:600}
 .vp-box{background:rgba(255,255,255,.1);border-radius:10px;padding:10px 14px;max-width:520px}
@@ -35,7 +35,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#f1f5f9;color:var(--s
 .stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:20px}
 .stat{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px 16px}
 .stat-label{font-size:10px;font-weight:600;color:var(--slate-mid);text-transform:uppercase;letter-spacing:.5px}
-.stat-val{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--navy);line-height:1.1;margin-top:2px}
+.stat-val{font-family:'Manrope',sans-serif;font-size:26px;font-weight:800;color:var(--navy);line-height:1.1;margin-top:2px}
 .filters{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;align-items:center}
 .flabel{font-size:11px;color:var(--slate-mid);font-weight:600;margin-right:2px}
 .chip{padding:4px 12px;border-radius:20px;border:1px solid var(--border);background:var(--white);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;color:var(--slate-mid);transition:all .15s;white-space:nowrap}
@@ -50,9 +50,9 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#f1f5f9;color:var(--s
 .card:hover{box-shadow:var(--sh-lg);transform:translateY(-2px)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .card-hdr{padding:11px 15px;display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--border)}
-.day-badge{width:32px;height:32px;border-radius:8px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:14px;font-weight:800;flex-shrink:0}
+.day-badge{width:32px;height:32px;border-radius:8px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-size:14px;font-weight:800;flex-shrink:0}
 .card-body{padding:13px 15px}
-.hook-txt{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:7px}
+.hook-txt{font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:7px}
 .angle-txt{font-size:11px;color:var(--slate-mid);line-height:1.5;margin-bottom:9px}
 .card-foot{padding:9px 15px;background:#f8fafc;border-top:1px solid var(--border);font-size:10px;color:var(--slate-mid);line-height:1.4}
 .pill{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:9px;font-weight:700;letter-spacing:.3px;text-transform:uppercase}
@@ -70,7 +70,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#f1f5f9;color:var(--s
 .p-reflection{background:#dbeafe;color:#1e40af}
 .tbl-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--border);box-shadow:var(--sh)}
 table{width:100%;border-collapse:collapse;background:var(--white);font-size:11px}
-th{padding:10px 13px;text-align:left;font-family:'Syne',sans-serif;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#fff;background:var(--navy);white-space:nowrap}
+th{padding:10px 13px;text-align:left;font-family:'Manrope',sans-serif;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#fff;background:var(--navy);white-space:nowrap}
 td{padding:10px 13px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:#f8fafc;cursor:pointer}
@@ -79,15 +79,15 @@ tr:hover td{background:#f8fafc;cursor:pointer}
 .hook-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px}
 .hook-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:13px;display:flex;flex-direction:column;gap:8px;transition:all .15s;animation:fadeUp .25s ease forwards;opacity:0}
 .hook-card:hover{border-color:var(--blue);box-shadow:var(--sh)}
-.hook-num{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--slate-mid);min-width:28px}
+.hook-num{font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;color:var(--slate-mid);min-width:28px}
 .hook-txt-main{font-size:12px;color:var(--navy);line-height:1.5;font-weight:500}
 .overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:200;backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px}
 .overlay.open{display:flex}
 .modal{background:var(--white);border-radius:18px;max-width:600px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,.18);animation:slideUp .22s ease}
 @keyframes slideUp{from{transform:translateY(18px);opacity:0}to{transform:translateY(0);opacity:1}}
 .modal-hdr{padding:20px 24px 16px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:13px}
-.modal-day{width:44px;height:44px;border-radius:11px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:18px;font-weight:800;flex-shrink:0}
-.modal-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:4px}
+.modal-day{width:44px;height:44px;border-radius:11px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-size:18px;font-weight:800;flex-shrink:0}
+.modal-title{font-family:'Manrope',sans-serif;font-size:16px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:4px}
 .modal-body{padding:20px 24px;display:flex;flex-direction:column;gap:16px}
 .m-label{font-size:9px;font-weight:700;color:var(--slate-mid);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
 .m-val{font-size:12px;color:var(--slate);line-height:1.6}
@@ -98,18 +98,18 @@ tr:hover td{background:#f8fafc;cursor:pointer}
 .modal-close:hover{background:var(--slate-lt);color:var(--navy)}
 .regen-panel{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-bottom:20px;display:none}
 .regen-panel.show{display:block}
-.regen-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:3px}
+.regen-title{font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:3px}
 .regen-sub{font-size:11px;color:var(--slate-mid);margin-bottom:14px}
 .regen-form{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
 .regen-field{display:flex;flex-direction:column;gap:4px}
 .regen-field label{font-size:10px;font-weight:600;color:var(--slate-mid);text-transform:uppercase;letter-spacing:.5px}
 .regen-field select,.regen-field input{padding:7px 10px;border:1px solid var(--border);border-radius:7px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;color:var(--slate);background:var(--white);outline:none}
-.regen-go{padding:8px 18px;border-radius:8px;border:none;cursor:pointer;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;background:var(--navy);color:#fff;transition:all .2s}
+.regen-go{padding:8px 18px;border-radius:8px;border:none;cursor:pointer;font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;background:var(--navy);color:#fff;transition:all .2s}
 .regen-go:hover{background:var(--blue)}
 .regen-status{font-size:11px;color:var(--slate-mid);margin-top:9px;min-height:16px}
 .hidden{display:none!important}
 .empty{text-align:center;padding:48px 20px;color:var(--slate-mid)}
-.empty h3{font-family:'Syne',sans-serif;font-size:16px;color:var(--slate);margin-bottom:5px}
+.empty h3{font-family:'Manrope',sans-serif;font-size:16px;color:var(--slate);margin-bottom:5px}
 @media(max-width:768px){.hdr-inner{padding:12px}.main{padding:14px}.cal-grid{grid-template-columns:1fr}.hook-grid{grid-template-columns:1fr}.stats-bar{grid-template-columns:repeat(2,1fr)}.srch-wrap{margin-left:0;width:100%}.srch-wrap input{width:100%}}
 </style>
 </head>
@@ -119,7 +119,7 @@ tr:hover td{background:#f8fafc;cursor:pointer}
   <div><div class="brand-name">Social Media Planner</div><div class="brand-sub">Dual-Brand Strategy Tool</div></div>
   <div class="tabs" id="brand-tabs">
     <button class="tab active" onclick="setBrand('annick')">Annick Bathrooms</button>
-    <button class="tab" onclick="setBrand('bp')">B&amp;P Supply</button>
+    <button class="tab" onclick="setBrand('bp')">B&amp;P Centre</button>
   </div>
   <div class="tabs" id="plat-tabs">
     <button class="tab active" onclick="setPlat('ig')">Instagram</button>
@@ -317,7 +317,7 @@ hooks:{ig:[
 {n:49,cat:"Engagement",hook:"What do you wish you had known before your last bathroom renovation? Tell us below.",type:"Question Post"},
 {n:50,cat:"Engagement",hook:"Rate the importance: price, quality, speed, or convenience. One word answer in the comments.",type:"Question Post"}
 ]}},
-bp:{name:"B&P Supply",sub:"Supply Only - Irvine, Scotland",pill:"Supply Only",vp:"The best product at the best price - you bring your fitter, we bring the range, the expertise, and the buying power to make your budget go further.",bc:"bp",
+bp:{name:"B&P Centre",sub:"Supply Only - Irvine, Scotland",pill:"Supply Only",vp:"The best product at the best price - you bring your fitter, we bring the range, the expertise, and the buying power to make your budget go further.",bc:"bp",
 ig:[
 {day:1,slot:"Week 1 Mon",type:"Reel",hook:"You bring your fitter. We bring the products. Here is what that combination looks like.",angle:"Supply-only positioning - clear value proposition",format:"Product showcase reel with contractor and homeowner framing",stop:"Clarity of the model immediately attracts the right customer",share:"Contractors share with homeowner clients",cta:"Visit our Irvine showroom or DM us your spec list - we will price it up and have it ready for your fitter"},
 {day:2,slot:"Week 1 Wed",type:"Carousel",hook:"5 reasons savvy homeowners and contractors choose supply-only from B&P",angle:"Supply-only advantages - choice, price, speed, flexibility",format:"Benefit swipe cards comparing supply-only for the right buyer",stop:"The savvy buyer identity resonates strongly with the target audience",share:"Contractors share to justify recommending B&P to clients",cta:"Save this - this is how smart bathroom buyers think. Come to our Irvine showroom and see what we mean"},
@@ -348,7 +348,7 @@ ig:[
 {day:27,slot:"Week 7 Fri",type:"Reel",hook:"The product that surprises everyone who sees it in person - it looks even better on the wall",angle:"In-person product discovery and showroom experience",format:"Surprising product reveal reel with showroom context",stop:"Curiosity and the in-person quality promise creates showroom visits",share:"People share the novelty and quality",cta:"This one you need to see in person. Come to our Irvine showroom this week"},
 {day:28,slot:"Week 7 Sun",type:"Post",hook:"You chose the products. You hired the fitter. We made the budget work.",angle:"Supply-only success story and customer empowerment",format:"Customer outcome post with supply-only framing",stop:"Empowerment narrative resonates with autonomous buyers",share:"People share as validation of the supply-only model",cta:"That is the B&P promise. Come in and let us show you how far your budget goes"},
 {day:29,slot:"Week 8 Mon",type:"Reel",hook:"New arrivals this week - what contractors and homeowners are getting excited about",angle:"New stock reveal and dual audience appeal",format:"Product arrival reel with both contractor and homeowner framing",stop:"Dual audience hook doubles the relevance",share:"Contractors and homeowners share from both sides",cta:"Come and see everything new in person - or DM us for a product list and pricing"},
-{day:30,slot:"Week 8 Wed",type:"Reel",hook:"30 days of helping Ayrshire homeowners and contractors get the best products at the best prices",angle:"Brand reflection and supply-only positioning",format:"Reflection reel with month highlights",stop:"Authentic reflection builds loyal following",share:"Trade and homeowner community shares",cta:"Thank you for following B&P Supply. Great products at great prices - always. Come and see us"}
+{day:30,slot:"Week 8 Wed",type:"Reel",hook:"30 days of helping Ayrshire homeowners and contractors get the best products at the best prices",angle:"Brand reflection and supply-only positioning",format:"Reflection reel with month highlights",stop:"Authentic reflection builds loyal following",share:"Trade and homeowner community shares",cta:"Thank you for following B&P Centre. Great products at great prices - always. Come and see us"}
 ],
 fb:[
 {day:1,slot:"Week 1 Mon",type:"Photo Post",hook:"She brought her fitter. We brought the products. Between us, they created this.",angle:"Supply-only partnership story",format:"Before and after photos with supply-only partnership narrative",stop:"The partnership model is novel and resonates immediately",share:"Contractors share to show clients how the model works",cta:"Have your fitter booked? Come to our Irvine showroom and choose everything together"},
@@ -357,7 +357,7 @@ fb:[
 {day:4,slot:"Week 1 Sun",type:"Poll Post",hook:"Quick question - when you renovate a bathroom, which do you prefer?",angle:"Supply-only vs supply-and-fit preference survey",format:"Poll with supply-only and supply-and-fit options",stop:"Preference poll drives comments explaining reasoning",share:"Shared to get partner and fitter opinions",cta:"Vote below and tell us why - we will share the results and our honest thoughts on Friday"},
 {day:5,slot:"Week 2 Mon",type:"Customer Story",hook:"He had a brilliant fitter lined up but could not find the right products at the right price. One visit to B&P solved that.",angle:"Supply-only problem-solver story",format:"Customer story with product selection narrative and happy fitter outcome",stop:"The fitter-plus-supply-problem is relatable to many homeowners",share:"Contractors share to show clients where to find them good products",cta:"Have your fitter sorted? We will sort the products. Come to our Irvine showroom this week"},
 {day:6,slot:"Week 2 Wed",type:"Educational Post",hook:"How to choose bathroom products your fitter will thank you for - our honest guide.",angle:"Fitter-approved product selection guidance",format:"Educational guide to product selection from a supply-only perspective",stop:"Fitter satisfaction is a rarely-addressed anxiety for homeowners",share:"Shared by homeowners with fitters to validate choices",cta:"Save this guide and bring it to our showroom. We will help you tick every box"},
-{day:7,slot:"Week 2 Fri",type:"Community Post",hook:"B&P Supply - where Ayrshire homeowners and contractors come to find the right products at the right price.",angle:"Local supplier positioning and community authority",format:"Showroom photo with community-focused caption",stop:"Local identity creates community connection on Facebook",share:"Shared in Ayrshire home and trade groups",cta:"If you are local and need great products for your bathroom renovation - come and see us"},
+{day:7,slot:"Week 2 Fri",type:"Community Post",hook:"B&P Centre - where Ayrshire homeowners and contractors come to find the right products at the right price.",angle:"Local supplier positioning and community authority",format:"Showroom photo with community-focused caption",stop:"Local identity creates community connection on Facebook",share:"Shared in Ayrshire home and trade groups",cta:"If you are local and need great products for your bathroom renovation - come and see us"},
 {day:8,slot:"Week 2 Sun",type:"Question Post",hook:"If you have ever used a separate supplier and fitter, what was the best or worst part? We would genuinely love to know.",angle:"Research and engagement and supply-only customer insight",format:"Direct question with an authentic curiosity framing",stop:"Invites personal experience sharing - high comment driver",share:"People share to get their network to weigh in",cta:"Tell us your experience below. Every comment helps us serve Ayrshire homeowners better"},
 {day:9,slot:"Week 3 Mon",type:"Photo Post",hook:"The products our showroom customers choose most - and what their fitters said when they arrived on site.",angle:"Fitter-approved bestseller social proof",format:"Bestseller photos with fitter feedback quote overlays",stop:"Fitter reaction on site is an authentic and rarely-seen perspective",share:"Homeowners share to show fitters before ordering",cta:"Which of these would you choose for your bathroom? Tell us below - or come and see them all in person"},
 {day:10,slot:"Week 3 Wed",type:"Educational Post",hook:"Seven questions to ask your bathroom supplier before you commit to a product - and what good answers look like.",angle:"Consumer empowerment and B&P as the right answer",format:"Q and A checklist with B&P-framed honest answers",stop:"Empowering checklist drives saves and shares",share:"Shared to help friends choose the right supplier",cta:"Ask us every one of these questions in store. We have a good answer for all seven"},
@@ -380,7 +380,7 @@ fb:[
 {day:27,slot:"Week 7 Fri",type:"Native Video",hook:"New products we are stocking for the first time - contractors, this one is for you.",angle:"New product introduction and trade audience targeting",format:"New product walkthrough video with trade focus",stop:"First-look content creates excitement for contractors",share:"Contractors share with colleagues and clients",cta:"Come and see these new lines in person or DM us for specs, pricing, and lead times"},
 {day:28,slot:"Week 7 Sun",type:"Review Spotlight",hook:"From our showroom to a completed bathroom in four days - and this is what the homeowner said.",angle:"Supply-only speed and quality social proof",format:"Complete journey review from product selection to finished bathroom",stop:"Four-day full journey is a remarkable timeline",share:"Shared by anyone planning a fast renovation",cta:"Share your own B&P experience in the comments or as a review - we are so grateful for every one"},
 {day:29,slot:"Week 8 Mon",type:"Photo Post",hook:"New arrivals this week - what homeowners and contractors are already ordering before they hit the floor.",angle:"New stock FOMO and pre-order interest",format:"New arrival photos with pre-order narrative",stop:"Pre-floor interest creates genuine scarcity signal",share:"Contractors share with clients as a buying recommendation",cta:"Want to see or order before they go? DM us or come into the Irvine showroom this week"},
-{day:30,slot:"Week 8 Wed",type:"Reflection Post",hook:"A month of helping Ayrshire homeowners and contractors find the right products at the right price. Here is what we have learned.",angle:"Brand reflection and supply-only positioning",format:"Reflection caption with team and product photo",stop:"Genuine reflection builds loyalty and emotional connection",share:"Community and business sharing",cta:"Thank you for following B&P Supply. The best products at the best price - always. Come and see us"}
+{day:30,slot:"Week 8 Wed",type:"Reflection Post",hook:"A month of helping Ayrshire homeowners and contractors find the right products at the right price. Here is what we have learned.",angle:"Brand reflection and supply-only positioning",format:"Reflection caption with team and product photo",stop:"Genuine reflection builds loyalty and emotional connection",share:"Community and business sharing",cta:"Thank you for following B&P Centre. The best products at the best price - always. Come and see us"}
 ],
 hooks:{ig:[
 {n:1,cat:"Supply Only USP",hook:"You bring your fitter. We bring the best products at the best price.",type:"Post"},
@@ -424,7 +424,7 @@ hooks:{ig:[
 {n:38,cat:"Supply Only",hook:"Great fitter hired. Great products chosen. This is what that combination produces.",type:"Photo Post"},
 {n:39,cat:"Supply Only",hook:"Supply only done right - the smart way to buy bathroom products in Ayrshire.",type:"Post"},
 {n:40,cat:"Supply Only",hook:"No fitting markup. Just the best products at the best price - you choose your fitter.",type:"Post"},
-{n:41,cat:"Community",hook:"B&P Supply - where Ayrshire homeowners and contractors come to find the right products.",type:"Post"},
+{n:41,cat:"Community",hook:"B&P Centre - where Ayrshire homeowners and contractors come to find the right products.",type:"Post"},
 {n:42,cat:"Community",hook:"Proud to be the product supplier Ayrshire contractors trust on every job.",type:"Post"},
 {n:43,cat:"Community",hook:"Local showroom. Local prices. Local homeowners and tradespeople who keep coming back.",type:"Post"},
 {n:44,cat:"Community",hook:"Ayrshire contractors - if you are not sourcing from B&P, here is what you are missing.",type:"Post"},
@@ -447,15 +447,15 @@ function render(){const B=BRANDS[brand],ih=plat==='hooks';document.getElementByI
 function renderStats(){const c=getCal();document.getElementById('st-total').textContent=c.length;document.getElementById('st-vid').textContent=c.filter(p=>p.type==='Reel'||p.type==='Native Video').length||'-';document.getElementById('st-car').textContent=c.filter(p=>p.type==='Carousel').length||'-';document.getElementById('st-post').textContent=c.filter(p=>p.type==='Post'||p.type==='Photo Post').length||'-'}
 function renderFilters(){const types=[...new Set(getCal().map(p=>p.type))].sort();document.getElementById('type-chips').innerHTML=types.map(t=>`<button class="chip ${tf===t?'active':''}" onclick="filterType('${t.replace(/'/g,"\\'")}',this)">${t}</button>`).join('')}
 function renderGrid(data){const el=document.getElementById('grid-view');el.innerHTML='';data.forEach((p,i)=>{const d=document.createElement('div');d.className='card';d.style.animationDelay=(i*22)+'ms';d.innerHTML=`<div class="card-hdr"><div class="day-badge">${p.day}</div><div style="flex:1;min-width:0"><div style="font-size:10px;color:var(--slate-mid)">${p.slot}</div><span class="pill ${pClass(p.type)}">${p.type}</span></div></div><div class="card-body"><div class="hook-txt">${p.hook}</div><div class="angle-txt">${p.angle}</div></div><div class="card-foot"><strong>CTA:</strong> ${p.cta.substring(0,80)}${p.cta.length>80?'...':''}</div>`;d.onclick=()=>openModal(p);el.appendChild(d)})}
-function renderTable(data){document.getElementById('tbl-body').innerHTML=data.map(p=>`<tr onclick='openModal(${JSON.stringify(p).replace(/'/g,"&#39;")})'><td><strong style="color:var(--navy);font-family:'Syne',sans-serif">${p.day}</strong></td><td style="font-size:10px;color:var(--slate-mid);white-space:nowrap">${p.slot}</td><td><span class="pill ${pClass(p.type)}" style="font-size:8px">${p.type}</span></td><td class="hook-col">${p.hook}</td><td style="font-size:10px;color:var(--slate-mid);max-width:160px">${p.angle}</td><td class="cta-col">${p.cta}</td></tr>`).join('')}
+function renderTable(data){document.getElementById('tbl-body').innerHTML=data.map(p=>`<tr onclick='openModal(${JSON.stringify(p).replace(/'/g,"&#39;")})'><td><strong style="color:var(--navy);font-family:'Manrope',sans-serif">${p.day}</strong></td><td style="font-size:10px;color:var(--slate-mid);white-space:nowrap">${p.slot}</td><td><span class="pill ${pClass(p.type)}" style="font-size:8px">${p.type}</span></td><td class="hook-col">${p.hook}</td><td style="font-size:10px;color:var(--slate-mid);max-width:160px">${p.angle}</td><td class="cta-col">${p.cta}</td></tr>`).join('')}
 function renderHooks(){const hooks=getHooks();const filtered=srch?hooks.filter(h=>h.hook.toLowerCase().includes(srch.toLowerCase())||h.cat.toLowerCase().includes(srch.toLowerCase())):hooks;const el=document.getElementById('hooks-view');el.innerHTML='';filtered.forEach((h,i)=>{const d=document.createElement('div');d.className='hook-card';d.style.animationDelay=(i*15)+'ms';d.innerHTML=`<div style="display:flex;align-items:center;gap:7px"><span class="hook-num">${h.n}</span><span class="pill ${cpClass(h.cat)}">${h.cat}</span><span class="pill ${pClass(h.type)}" style="font-size:8px">${h.type}</span></div><div class="hook-txt-main">${h.hook}</div><div><button class="copy-btn" onclick="copyTxt('${h.hook.replace(/'/g,"\\'").replace(/"/g,'&quot;')}',this)">&#128203; Copy hook</button></div>`;el.appendChild(d)})}
-function setBrand(b){brand=b;tf='all';srch='';document.getElementById('srch').value='';document.querySelectorAll('#brand-tabs .tab').forEach((t,i)=>t.classList.toggle('active',['annick','bp'][i]===b));render()}
+function setBrand(b){brand=b;tf='all';srch='';document.getElementById('srch').value='';document.querySelectorAll('#brand-tabs .tab').forEach((t,i)=>t.classList.toggle('active',['annick','bp'][i]===b));document.querySelector('.hdr').style.background=b==='annick'?'#4895d0':'#f2672a';document.querySelector('.regen-btn').style.background=b==='annick'?'#4895d0':'#f2672a';render()}
 function setPlat(p){plat=p;tf='all';srch='';document.getElementById('srch').value='';document.querySelectorAll('#plat-tabs .tab').forEach((t,i)=>t.classList.toggle('active',['ig','fb','hooks'][i]===p));render()}
 function setView(v){view=v;document.querySelectorAll('.vbtn').forEach((t,i)=>t.classList.toggle('active',['grid','table'][i]===v));render()}
 function filterType(t,btn){tf=t;document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));btn.classList.add('active');render()}
 function doSearch(q){srch=q;render()}
 function toggleRegen(){document.getElementById('regen-panel').classList.toggle('show')}
-function runRegen(){const theme=document.getElementById('regen-theme').value,season=document.getElementById('regen-season').value||'general',product=document.getElementById('regen-product').value||'bathroom products',statusEl=document.getElementById('regen-status'),B=BRANDS[brand];statusEl.textContent='Generating new 30-day calendar...';const themeD={seasonal:`seasonal and trend-led content for ${season}`,product:`product spotlight content focused on ${product}`,social_proof:'heavy social proof and customer transformation content',education:'education-first content positioning the brand as the expert',community:'community-focused and locally relevant content',price:'price transparency and value demonstration content'};const brandCtx=brand==='annick'?`Annick Bathrooms is a supply AND fit company. Value proposition: ${B.vp}`:`B&P Supply is a supply-only company. Value proposition: ${B.vp}`;const platCtx=plat==='ig'?'Instagram - Reels and Carousels, short punchy hooks, Ayrshire/Scotland audience':'Facebook - story-led long captions, local Ayrshire groups, homeowner and trade audience, 35-65 demographic';const prompt=`You are a social media content strategist for ${B.name}, a bathroom company in Irvine, Ayrshire, Scotland.\n\nBRAND: ${brandCtx}\n\nPLATFORM: ${platCtx}\n\nTHEME: ${themeD[theme]}\n\nGenerate a fresh 30-day content calendar (days 31-60). Return ONLY valid JSON, no markdown, no code blocks:\n\n{"calendar":[{"day":31,"slot":"Week 9 Mon","type":"Reel","hook":"...","angle":"...","format":"...","stop":"...","share":"...","cta":"..."}...]}\n\nRules:\n- 30 posts total (days 31-60)\n- Post types for Instagram: Reel, Carousel, Post, Story. For Facebook: Photo Post, Educational Post, Native Video, Poll Post, Customer Story, Question Post, Review Spotlight, Debate Post, Facebook Live.\n- Every hook must reflect ${B.name} value proposition specifically\n- Every CTA must reference the Irvine showroom\n- No em dashes\n- Vary post types`;fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:4000,messages:[{role:'user',content:prompt}]})}).then(r=>r.json()).then(data=>{try{const raw=data.content.map(b=>b.text||'').join('');const clean=raw.replace(/```json|```/g,'').trim();const parsed=JSON.parse(clean);if(!parsed.calendar||!Array.isArray(parsed.calendar))throw new Error('Bad structure');if(plat==='ig')BRANDS[brand].ig=parsed.calendar;else BRANDS[brand].fb=parsed.calendar;tf='all';srch='';document.getElementById('srch').value='';statusEl.textContent=`Generated ${parsed.calendar.length} posts (days 31-60). Theme: ${theme}.`;render()}catch(e){statusEl.textContent='Generation failed. Check your connection. ('+e.message+')'}}).catch(()=>{statusEl.textContent='Network error. Try again.'})}
+function runRegen(){const theme=document.getElementById('regen-theme').value,season=document.getElementById('regen-season').value||'general',product=document.getElementById('regen-product').value||'bathroom products',statusEl=document.getElementById('regen-status'),B=BRANDS[brand];statusEl.textContent='Generating new 30-day calendar...';const themeD={seasonal:`seasonal and trend-led content for ${season}`,product:`product spotlight content focused on ${product}`,social_proof:'heavy social proof and customer transformation content',education:'education-first content positioning the brand as the expert',community:'community-focused and locally relevant content',price:'price transparency and value demonstration content'};const brandCtx=brand==='annick'?`Annick Bathrooms is a supply AND fit company. Value proposition: ${B.vp}`:`B&P Centre is a supply-only company. Value proposition: ${B.vp}`;const platCtx=plat==='ig'?'Instagram - Reels and Carousels, short punchy hooks, Ayrshire/Scotland audience':'Facebook - story-led long captions, local Ayrshire groups, homeowner and trade audience, 35-65 demographic';const prompt=`You are a social media content strategist for ${B.name}, a bathroom company in Irvine, Ayrshire, Scotland.\n\nBRAND: ${brandCtx}\n\nPLATFORM: ${platCtx}\n\nTHEME: ${themeD[theme]}\n\nGenerate a fresh 30-day content calendar (days 31-60). Return ONLY valid JSON, no markdown, no code blocks:\n\n{"calendar":[{"day":31,"slot":"Week 9 Mon","type":"Reel","hook":"...","angle":"...","format":"...","stop":"...","share":"...","cta":"..."}...]}\n\nRules:\n- 30 posts total (days 31-60)\n- Post types for Instagram: Reel, Carousel, Post, Story. For Facebook: Photo Post, Educational Post, Native Video, Poll Post, Customer Story, Question Post, Review Spotlight, Debate Post, Facebook Live.\n- Every hook must reflect ${B.name} value proposition specifically\n- Every CTA must reference the Irvine showroom\n- No em dashes\n- Vary post types`;fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:4000,messages:[{role:'user',content:prompt}]})}).then(r=>r.json()).then(data=>{try{const raw=data.content.map(b=>b.text||'').join('');const clean=raw.replace(/```json|```/g,'').trim();const parsed=JSON.parse(clean);if(!parsed.calendar||!Array.isArray(parsed.calendar))throw new Error('Bad structure');if(plat==='ig')BRANDS[brand].ig=parsed.calendar;else BRANDS[brand].fb=parsed.calendar;tf='all';srch='';document.getElementById('srch').value='';statusEl.textContent=`Generated ${parsed.calendar.length} posts (days 31-60). Theme: ${theme}.`;render()}catch(e){statusEl.textContent='Generation failed. Check your connection. ('+e.message+')'}}).catch(()=>{statusEl.textContent='Network error. Try again.'})}
 function openModal(p){selPost=p;document.getElementById('m-day').textContent=p.day;document.getElementById('m-date').textContent=p.slot;document.getElementById('m-pill').innerHTML=`<span class="pill ${pClass(p.type)}">${p.type}</span>`;document.getElementById('m-hook').textContent=p.hook;document.getElementById('m-angle').textContent=p.angle;document.getElementById('m-format').textContent=p.format||'See content angle for guidance';document.getElementById('m-stop').textContent=p.stop||'See hook and angle';document.getElementById('m-share').textContent=p.share||'Strong shareability built into the hook';document.getElementById('m-cta').textContent=p.cta;document.getElementById('copy-btn').className='copy-btn';document.getElementById('copy-btn').textContent='\u{1F4CB} Copy to clipboard';document.getElementById('overlay').classList.add('open')}
 function closeModal(e){if(!e||e.target===document.getElementById('overlay'))document.getElementById('overlay').classList.remove('open')}
 function copyCTA(){if(!selPost)return;navigator.clipboard.writeText(selPost.cta).then(()=>{const b=document.getElementById('copy-btn');b.className='copy-btn copied';b.textContent='Copied!';setTimeout(()=>{b.className='copy-btn';b.textContent='\u{1F4CB} Copy to clipboard'},2000)})}
@@ -465,3 +465,4 @@ render();
 </script>
 </body>
 </html>
+
